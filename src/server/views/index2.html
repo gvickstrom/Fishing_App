@@ -6,12 +6,14 @@
 
 <div class="container">
     <main>
-      <div class="col-md-6">
+      <div class="columns">
+
+      <div class="column col-6">
         <img src="http://placehold.it/550x350">
       </div>
-      <div class="col-md-6">
-        <div class="dropdown">
-          <select class="dropdown" name="river-basin">
+      <div class="column col-6">
+        <div class="dropdown columns">
+          <select class="form-select select-lg" name="river-basin">
             <option>Select a River Basin</option>
             {% for river in rivers %}
             <option>{{river.river}}</option>
@@ -19,8 +21,9 @@
           </select>
         </div>
         <br><br>
-        <div class="drop-down">
-          <select class="dropdown" name="river-site" id="site-dropdown">
+        <div class="dropdown columns">
+          {{sites}}
+          <select class="form-select select-lg" name="river-site">
             <option>Select a Site</option>
             {% for site in sites %}
             <option>{{site.site}}</option>
@@ -28,6 +31,7 @@
           </select>
         </div>
       </div>
+    </div>
     </main>
   </div>
 
