@@ -1,0 +1,27 @@
+html,
+body {
+  background: url(../media/landing.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: absolute;
+}
+
+.landing {
+  position: static;
+  margin-top: 70vh;
+  width: 100vw;
+  height: 120px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+  display: inline-flex;
+}
+
+h1 {
+  text-align: center;
+}
+
+button {
+  margin-top: 25px;
+}

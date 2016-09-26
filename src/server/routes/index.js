@@ -16,6 +16,12 @@ router.get('/', function (req, res, next) {
   });
 });
 
+router.get('/landing', function (req, res, next) {
+  const renderObject = {};
+  renderObject.hello = 'Hello World!'
+  res.render('landing', renderObject);
+});
+
 router.get('/weather', function (req, res, next) {
   const renderObject = {};
 
