@@ -23,8 +23,6 @@ router.get('/landing', function (req, res, next) {
   res.render('landing', renderObject);
 });
 
-router.get('/weather', function (req, res, next) {}
-
 router.get('/single-river', function (req, res, next) {
 
   const renderObject = {};
