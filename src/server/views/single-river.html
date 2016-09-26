@@ -2,10 +2,77 @@
 
 {% block title %}{% endblock %}
 
+{% block css %}
+  <link rel="stylesheet" href="/css/single-river.css">
+{% endblock %}
+
 {% block content %}
 
   <div class="container">
     <h1>Single River</h1>
+    <div class='row'>
+
+    <div class='col-md-6 left_col'>
+      <div class="col-md-12">
+        <h3 class='text-center'>Arkansas River Info</h4>
+          <br>
+        <ul>
+          <!-- <li>latitude: {{weatherPayload.latitude}}</li>
+          <li>longitude: {{weatherPayload.longitude}}</li> -->
+          <li>current temp: {{weatherPayload.currently.temperature}}</li>
+          <li>current condition: {{weatherPayload.currently.summary}}</li>
+          <li>daily forecast summary: {{weatherPayload.daily.data[0].summary}}</li>
+          <li>daily min temp: {{weatherPayload.daily.data[0].temperatureMin}}</li>
+          <li>daily max temp: {{weatherPayload.daily.data[0].temperatureMax}}</li>
+          <li>daily forecast wind speed: {{weatherPayload.daily.data[0].windSpeed}}</li>
+          <li>daily forecast wind bearing: {{weatherPayload.daily.data[0].windBearing}}</li>
+          <li>daily forecast precip probability: {{weatherPayload.daily.data[0].precipProbability}}</li>
+        </ul>
+      </div>
+      <div class="col-md-12">
+        <img class='placeholder_map' src="http://www.swt.usace.army.mil/portals/41/siteimages/missions/navigation/map.jpg" alt="map_placeholder" />
+      </div>
+    </div>
+
+      <div class='col-md-6 right_col'>
+        <h3 class='text-center'>{{ reports | length }} Reports</h4>
+          <br>
+        <div class='col-md-12'>
+          <a href="#" class="btn btn-primary btn-block">Add Report</a>
+          <div class='col-md-12'>
+            <br>
+          {% for report in reports %}
+
+              <div class="row">
+                <div class="col-md-2">
+                  <p>
+                    <strong>User:</strong> {{ report.user_id}}
+                  </p>
+                </div>
+                <div class="col-md-5">
+                  <p>
+                    <strong>Start:</strong> {{ report.start_time | date("DD/M/YYYY, h:mm a")}}
+                  </p>
+                </div>
+                <div class="col-md-5">
+                  <p>
+                    <strong>End:</strong> {{report.end_time | date("DD/M/YYYY, h:mm a")}}
+                  </p>
+                </div>
+              </div>
+
+
+              <p>
+                {{ report.report }}
+              </p>
+
+          <hr>
+
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
   </div>
 
 {% endblock %}
