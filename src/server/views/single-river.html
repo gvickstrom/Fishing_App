@@ -35,30 +35,31 @@
 
       <div class='col-md-6 right_col'>
         <h3 class='text-center'>{{ reports | length }} Reports</h4>
-
+          <br>
         <div class='col-md-12'>
-          <a href="#" class="btn btn-block">Add Report</a>
+          <a href="#" class="btn btn-primary btn-block">Add Report</a>
           <div class='col-md-12'>
+            <br>
           {% for report in reports %}
-            <div class="container">
+
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                   <p>
-                    User: {{ report.user_id}}
+                    <strong>User:</strong> {{ report.user_id}}
                   </p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-5">
                   <p>
-                    Start Time: {{ report.start_time}}
+                    <strong>Start:</strong> {{ report.start_time | date("ddd, MMM Do YYYY")}}
                   </p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-5">
                   <p>
-                    End Time: {{report.end_time}}
+                    <strong>End:</strong> {{report.end_time | date("ddd, MMM Do YYYY")}}
                   </p>
                 </div>
               </div>
-            </div>
+
 
               <p>
                 {{ report.report }}
