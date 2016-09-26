@@ -1,0 +1,38 @@
+{% extends "_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <main>
+      <div class="columns">
+
+      <div class="column col-6">
+        <img src="http://placehold.it/550x350">
+      </div>
+      <div class="column col-6">
+        <div class="dropdown columns">
+          <select class="form-select select-lg" name="river-basin">
+            <option>Select a River Basin</option>
+            {% for river in rivers %}
+            <option>{{river.river}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <br><br>
+        <div class="dropdown columns">
+          {{sites}}
+          <select class="form-select select-lg" name="river-site">
+            <option>Select a Site</option>
+            {% for site in sites %}
+            <option>{{site.site}}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    </div>
+    </main>
+  </div>
+
+{% endblock %}

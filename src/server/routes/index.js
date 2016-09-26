@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
-
-const indexController = require('../controllers/index');
+const queries = require('../db/queries');
 
 router.get('/', function (req, res, next) {
-  const renderObject = {};
-  renderObject.title = 'Welcome to Express!';
-  indexController.sum(1, 2, (error, results) => {
-    if (error) return next(error);
-    if (results) {
-      renderObject.sum = results;
+  queries.getRivers(function(err, results) {
+    var renderObject = {};
+    if (err) {
+      renderObject.message = err.message || 'Something terrible happened.';
+      res.render('error', renderObject);
+    } else {
+      renderObject.rivers = results;
       res.render('index', renderObject);
     }
   });

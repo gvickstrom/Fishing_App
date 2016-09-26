@@ -4,9 +4,45 @@
 
 {% block content %}
 
-  <div class="container">
-    <h1>Landing Page</h1>
-    <button class="btn">Default Button</button>
+<div class="container">
+    <main>
+      <div class="col-md-6">
+        <img src="http://placehold.it/550x350">
+      </div>
+      <div class="col-md-6">
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="river-basin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" name="river-basin">Select a Basin<span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" name="river-basin">
+            {% for river in rivers %}
+            <li>{{river.river}}</li>
+            {% endfor %}
+          </ul>
+          <!-- <select class="form-select select-lg" name="river-basin">
+            <option>Select a River Basin</option>
+            {% for river in rivers %}
+            <option>{{river.river}}</option>
+            {% endfor %}
+          </select> -->
+        </div>
+        <br><br>
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="river-basin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" name="river-basin">Select a Site<span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="river-site" name="river-site" id="site-dropdown">
+            {% for site in sites %}
+            <li>{{site.site}}</li>
+            {% endfor %}
+          </ul>
+          <!-- <select class="form-select select-lg" name="river-site" id="site-dropdown">
+            <option>Select a Site</option>
+            {% for site in sites %}
+            <option>{{site.site}}</option>
+            {% endfor %}
+          </select> -->
+        </div>
+      </div>
+    </main>
   </div>
 
 {% endblock %}
