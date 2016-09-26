@@ -6,24 +6,20 @@ const knex = require('../db/knex.js');
 const indexController = require('../controllers/index');
 
 router.get('/', function (req, res, next) {
-  const renderObject = {};
-  renderObject.title = 'Welcome to Express!';
-  indexController.sum(1, 2, (error, results) => {
-    if (error) return next(error);
-    if (results) {
-      renderObject.sum = results;
-      res.render('index', renderObject);
-    }
-  });
+  res.redirect('landing');
 });
 
 router.get('/landing', function (req, res, next) {
   const renderObject = {};
-  renderObject.hello = 'Hello World!'
+  renderObject.title = 'Anglers';
   res.render('landing', renderObject);
 });
 
-router.get('/weather', function (req, res, next) {}
+router.get('/sign-up', function (req, res, next) {
+  const renderObject = {};
+  renderObject.title = 'Anglers: Sign Up'
+  res.render('sign-up', renderObject);
+});
 
 router.get('/single-river', function (req, res, next) {
 
@@ -44,7 +40,6 @@ router.get('/single-river', function (req, res, next) {
   .catch(function (error) {
     console.log(error);
   });
-
 
 });
 
