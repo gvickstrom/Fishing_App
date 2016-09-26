@@ -1,0 +1,15 @@
+.left_col{
+  padding-left: 50px;
+}
+
+.right_col{
+  padding-right: 50px;
+}
+
+.placeholder_map{
+  max-width: 550px;
+}
+
+li{
+  margin-top: 0rem;
+}
