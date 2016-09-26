@@ -26,10 +26,10 @@
     const nunjucksEnv = nunjucks.configure(viewFolders, {
       express: app,
       autoescape: true
-    })
-    
+    });
+
     nunjucksEnv.addFilter('date', dateFilter);
-    app.set('view engine', 'html')
+    app.set('view engine', 'html');
 
     // *** app middleware *** //
     if (process.env.NODE_ENV !== 'test') {
