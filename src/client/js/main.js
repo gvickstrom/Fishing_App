@@ -13,7 +13,7 @@
       success: function(data) {
         $.each(data.sites, function(k,v) {
           var site = v["site_name"]
-          $('#site-dropdown').append($('<li></li>')
+          $('#site-dropdown').append($('<option></option>')
           .text(JSON.stringify(site)));
         });
       },
