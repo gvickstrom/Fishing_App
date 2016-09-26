@@ -15,6 +15,7 @@
     <div class='col-md-6 left_col'>
       <div class="col-md-12">
         <h3 class='text-center'>Arkansas River Info</h4>
+          <br>
         <ul>
           <!-- <li>latitude: {{weatherPayload.latitude}}</li>
           <li>longitude: {{weatherPayload.longitude}}</li> -->
@@ -50,12 +51,12 @@
                 </div>
                 <div class="col-md-5">
                   <p>
-                    <strong>Start:</strong> {{ report.start_time | date("ddd, MMM Do YYYY")}}
+                    <strong>Start:</strong> {{ report.start_time | date("DD/M/YYYY, h:mm a")}}
                   </p>
                 </div>
                 <div class="col-md-5">
                   <p>
-                    <strong>End:</strong> {{report.end_time | date("ddd, MMM Do YYYY")}}
+                    <strong>End:</strong> {{report.end_time | date("DD/M/YYYY, h:mm a")}}
                   </p>
                 </div>
               </div>
