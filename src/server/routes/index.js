@@ -17,7 +17,16 @@ router.get('/', function (req, res, next) {
   });
 });
 
+router.get('/landing', function (req, res, next) {
+  const renderObject = {};
+  renderObject.hello = 'Hello World!'
+  res.render('landing', renderObject);
+});
+
+router.get('/weather', function (req, res, next) {}
+
 router.get('/single-river', function (req, res, next) {
+
   const renderObject = {};
 
   axios.get('https://api.darksky.net/forecast/2e41cd367153b0382dd154001a4576fc/39.2541,-105.2276')
