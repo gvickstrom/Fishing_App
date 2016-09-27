@@ -22,3 +22,14 @@ exports.getRiverSites = function(riverName, callback) {
     callback(err);
   });
 };
+
+exports.updateRiverData = function(object, callback) {
+  knex('stations')
+  .insert(object)
+  .then(function () {
+    callback(null, object.name);
+  })
+  .catch(err => {
+    callback(err);
+  });
+};
