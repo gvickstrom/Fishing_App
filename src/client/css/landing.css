@@ -10,8 +10,55 @@ body {
 
 .landing {
   position: static;
-  margin-top: 70vh;
+  margin-top: 55vh;
   width: 100vw;
-  height: 120px;
+  height: 12rem;
   background: rgba(0, 0, 0, 0.7);
+}
+
+.header-title {
+  color: #fff;
+  font-size: 7rem;
+  margin-left: 20rem;
+  font-family: 'Nothing You Could Do', cursive;
+}
+
+.sign-in {
+  background: #6F6259;
+  margin: 3.5rem 0 0 20rem;
+  border: none;
+}
+
+.sign-in:hover,
+.sign-in:focus {
+  background: #CC5500;
+  border: none;
+}
+
+.modal-content {
+  border-radius: 0 !important;
+  margin-top: 10rem;
+}
+
+.modal-header {
+  background: #6F6259;
+  color: #000;
+}
+
+.button-row {
+  margin-left: 1rem;
+}
+
+.login-button,
+.login-button:hover,
+.login-button:focus {
+  background: #CC9E61;
+  border: none;
+}
+
+.signUp-button,
+.signUp-button:hover,
+.signUp-button:focus {
+  background: #CC5500;
+  border: none;
 }
