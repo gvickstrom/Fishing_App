@@ -1,9 +1,5 @@
-.left_col{
-  padding-left: 25px;
-}
-
-.right_col{
-  padding-right: 25px;
+.small_text{
+  font-size: 12px;
 }
 
 .placeholder_map{

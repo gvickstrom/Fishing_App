@@ -14,7 +14,7 @@
 
     <div class='col-md-6 left_col'>
       <div class="col-md-12">
-        <h3 class='text-center'>Arkansas River Info</h4>
+        <h3 class='text-center'>{{reports[0].river}} Info</h4>
           <br>
         <ul>
           <!-- <li>latitude: {{weatherPayload.latitude}}</li>
@@ -27,6 +27,12 @@
           <li>daily forecast wind speed: {{weatherPayload.daily.data[0].windSpeed}}</li>
           <li>daily forecast wind bearing: {{weatherPayload.daily.data[0].windBearing}}</li>
           <li>daily forecast precip probability: {{weatherPayload.daily.data[0].precipProbability}}</li>
+        </ul>
+        <ul>
+          <li>Last Reading: {{reports.reading_date_time | date("DD/M/YY, h:mm a")}}</li>
+          <li>Water Temp (C): 21</li>
+          <li>Flow Rate (CFS): 152</li>
+
         </ul>
       </div>
       <div class="col-md-12">
@@ -44,19 +50,19 @@
           {% for report in reports %}
 
               <div class="row">
-                <div class="col-md-2">
-                  <p>
-                    <strong>User:</strong> {{ report.user_id}}
+                <div class="col-md-3">
+                  <p class='small_text'>
+                    <strong>Name:</strong> {{ report.first_name}} {{ report.last_name | truncate(1, true, '.') }}
                   </p>
                 </div>
-                <div class="col-md-5">
-                  <p>
-                    <strong>Start:</strong> {{ report.start_time | date("DD/M/YYYY, h:mm a")}}
+                <div class="col-md-4">
+                  <p class='small_text'>
+                    <strong>Start:</strong> {{ report.start_time | date("DD/M/YY, h:mm a")}}
                   </p>
                 </div>
-                <div class="col-md-5">
-                  <p>
-                    <strong>End:</strong> {{report.end_time | date("DD/M/YYYY, h:mm a")}}
+                <div class="col-md-4">
+                  <p class='small_text'>
+                    <strong>End:</strong> {{report.end_time | date("DD/M/YY, h:mm a")}}
                   </p>
                 </div>
               </div>
