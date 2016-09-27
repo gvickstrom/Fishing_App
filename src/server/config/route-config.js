@@ -6,13 +6,17 @@
 
     // *** routes *** //
     const routes = require('../routes/index');
-    const homepageRoutes = require('../routes/homepage');
-    const sitesRoutes = require('../routes/sites');
+    const landing = require('../routes/landing');
+    const signUp = require('../routes/sign-up');
+    const homepage = require('../routes/homepage');
+    const sites = require('../routes/sites');
 
     // *** register routes *** //
     app.use('/', routes);
-    app.use('/homepage', homepageRoutes);
-    app.use('/sites', sitesRoutes);
+    app.use('/landing', landing);
+    app.use('/sign-up', signUp);
+    app.use('/homepage', homepage);
+    app.use('/sites', sites);
 
   };
 

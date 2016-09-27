@@ -1,36 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const queries = require('../db/queries');
-
-// router.get('/', function (req, res, next) {
-//   queries.getRivers(function(err, results) {
-//     var renderObject = {};
-//     if (err) {
-//       renderObject.message = err.message || 'Something terrible happened.';
-//       res.render('error', renderObject);
-//     } else {
-//       renderObject.rivers = results;
-//       res.render('index', renderObject);
-//     }
 const axios = require('axios');
 const knex = require('../db/knex.js');
 
-const indexController = require('../controllers/index');
-
 router.get('/', function (req, res, next) {
   res.redirect('landing');
-});
-
-router.get('/landing', function (req, res, next) {
-  const renderObject = {};
-  renderObject.title = 'Anglers';
-  res.render('landing', renderObject);
-});
-
-router.get('/sign-up', function (req, res, next) {
-  const renderObject = {};
-  renderObject.title = 'Anglers: Sign Up'
-  res.render('sign-up', renderObject);
 });
 
 router.get('/single-river', function (req, res, next) {

@@ -4,7 +4,7 @@ const queries = require('../db/queries');
 
 router.get('/', function (req, res, next) {
   queries.getRivers(function(err, results) {
-    var renderObject = {};
+    const renderObject = {};
     if (err) {
       renderObject.message = err.message || 'Something terrible happened.';
       res.render('error', renderObject);
