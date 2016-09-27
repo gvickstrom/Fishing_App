@@ -23,16 +23,25 @@
     {% endblock %}
   </head>
   <body>
-    {% include "header.html" %}
+
+    {% include "modules/header.html" %}
+
     <main>
       <div class="row">
         {% block content %}
         {% endblock %}
       </div>
     </main>
-    {% include "footer.html" %}
+
+    {% include "modules/footer.html" %}
+
+    <!-- jQuery CDN -->
     <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- jQuery Validation Plugin -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
+    <!-- Boostrap CDN -->
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- Personal JavaScript -->
     <script type="text/javascript" src="/js/main.js"></script>
     {% block scripts %}{% endblock %}
   </body>
