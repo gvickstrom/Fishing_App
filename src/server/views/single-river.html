@@ -12,13 +12,15 @@
     <h1>Single River</h1>
     <div class='row'>
 
+
+
     <div class='col-md-6 left_col'>
       <div class="col-md-12">
-        <h3 class='text-center'>Arkansas River Info</h4>
+        <h3 class='text-center geo' data-lat='{{reports[0].lat}}' data-lon='{{reports[0].lon}}'>{{reports[0].river}} Info</h3>
           <br>
         <ul>
-          <!-- <li>latitude: {{weatherPayload.latitude}}</li>
-          <li>longitude: {{weatherPayload.longitude}}</li> -->
+          <li>latitude: {{weatherPayload.latitude}}</li>
+          <li>longitude: {{weatherPayload.longitude}}</li>
           <li>current temp: {{weatherPayload.currently.temperature}}</li>
           <li>current condition: {{weatherPayload.currently.summary}}</li>
           <li>daily forecast summary: {{weatherPayload.daily.data[0].summary}}</li>
@@ -28,11 +30,23 @@
           <li>daily forecast wind bearing: {{weatherPayload.daily.data[0].windBearing}}</li>
           <li>daily forecast precip probability: {{weatherPayload.daily.data[0].precipProbability}}</li>
         </ul>
+        <ul>
+          <li>Last Reading: {{reports.reading_date_time | date("DD/M/YY, h:mm a")}}</li>
+          <li>Water Temp (C): 21</li>
+          <li>Flow Rate (CFS): 152</li>
+
+        </ul>
       </div>
-      <div class="col-md-12">
+      <!-- <div class="col-md-12">
         <img class='placeholder_map' src="http://www.swt.usace.army.mil/portals/41/siteimages/missions/navigation/map.jpg" alt="map_placeholder" />
+      </div> -->
+
+      <div id="map">
       </div>
+
     </div>
+
+
 
       <div class='col-md-6 right_col'>
         <h3 class='text-center'>{{ reports | length }} Reports</h4>
@@ -44,19 +58,19 @@
           {% for report in reports %}
 
               <div class="row">
-                <div class="col-md-2">
-                  <p>
-                    <strong>User:</strong> {{ report.user_id}}
+                <div class="col-md-3">
+                  <p class='small_text'>
+                    <strong>Name:</strong> {{ report.first_name}} {{ report.last_name | truncate(1, true, '.') }}
                   </p>
                 </div>
-                <div class="col-md-5">
-                  <p>
-                    <strong>Start:</strong> {{ report.start_time | date("DD/M/YYYY, h:mm a")}}
+                <div class="col-md-4">
+                  <p class='small_text'>
+                    <strong>Start:</strong> {{ report.start_time | date("DD/M/YY, h:mm a")}}
                   </p>
                 </div>
-                <div class="col-md-5">
-                  <p>
-                    <strong>End:</strong> {{report.end_time | date("DD/M/YYYY, h:mm a")}}
+                <div class="col-md-4">
+                  <p class='small_text'>
+                    <strong>End:</strong> {{report.end_time | date("DD/M/YY, h:mm a")}}
                   </p>
                 </div>
               </div>

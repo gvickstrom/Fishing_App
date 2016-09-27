@@ -1,52 +1,44 @@
-{% extends "_base.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}{% endblock %}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>{{ title }}</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Personal CSS -->
+  <link rel="stylesheet" href="/css/landing.css" media="screen" title="no title">
+  <!-- Font Awesome -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
+  {% block css %}{% endblock %}
+</head>
 
-{% block css %}
-<link rel="stylesheet" href="/css/landing.css" media="screen" title="no title">
-{% endblock %}
-
-{% block content %}
-
-<div class="container-fluid">
-  <div class="row landing">
-    <div class="col-md-6">
-      <h1 class="">Anglers</h1>
-    </div>
-    <div class="col-md-6">
-      <button class="btn btn-success btn-lg" data-toggle="modal" data-target=".login">Login / Sign Up</button>
-
-      <div class="modal fade login" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-        <div class="modal-dialog modal-sm" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Login / Sign Up</h4>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label for="username">Username</label>
-                  <input type="text" class="form-control" id="username" name="username">
-                </div>
-                <div class="form-group">
-                  <label for="userpassword">Password</label>
-                  <input type="password" class="form-control" id="userpassword" name="password">
-                </div>
-                <div class="row text-center">
-                  <button type="button" class="btn btn-success col-sm-4 col-sm-offset-1">Login</button>
-                  <a href="/sign-up" class="btn btn-primary col-sm-4 col-sm-offset-1">Sign Up</a>
-                </div>
-                <div class="row text-center">
-                  <a href="/index">View as guest</a>
-                </div>
-              </form>
-            </div>
+<body>
+  <main>
+    <div class="row">
+      <div class="container-fluid">
+        <div class="row landing">
+          <div class="col-md-6">
+            <h1 class="header-title">Anglers</h1>
+          </div>
+          <div class="col-md-6">
+            {% include "modules/login-modal.html" %}
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </main>
 
-{% endblock %}
+  <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/main.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+
+</html>

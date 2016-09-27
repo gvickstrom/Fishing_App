@@ -17,19 +17,31 @@
     <link rel="stylesheet" href="/css/_base.css">
     <!-- Font Awesome -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
     {% block css %}
     {% endblock %}
   </head>
   <body>
-    <!-- Include header if not index.html -->
-    {% if not landing.html %}
-      {% include "header.html" %}
-    {% endif %}
 
-      {% block content %}
-      {% endblock %}
+    {% include "modules/header.html" %}
+
+    <main>
+      <div class="row">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </main>
+
+    {% include "modules/footer.html" %}
+
+    <!-- jQuery CDN -->
     <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- jQuery Validation Plugin -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
+    <!-- Boostrap CDN -->
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- Personal JavaScript -->
     <script type="text/javascript" src="/js/main.js"></script>
     {% block scripts %}{% endblock %}
   </body>
