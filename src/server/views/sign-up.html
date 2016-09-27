@@ -9,7 +9,7 @@
 {% block content %}
 
   <div class="container">
-    <form class="col-md-6 col-md-offset-3 sign-up">
+    <form class="col-md-6 col-md-offset-3 sign-up" action="/sign-up" method="POST" id="sign-up-form">
       <div class="row">
         <div class="from-group col-md-6">
           <label for="newFirst">First Name</label>
@@ -25,29 +25,25 @@
         <input type="email" class="form-control" id="newEmail" name="email">
       </div>
       <div class="row">
-        <div class="from-group col-md-6">
+        <div class="from-group col-md-12">
           <label for="newUsername">Username</label>
           <input type="text" class="form-control" id="newUsername" name="username">
         </div>
-        <div class="from-group col-md-6">
-          <label for="userURL">Photo URL</label>
-          <input type="text" class="form-control" id="userURL" name="userURL">
-        </div>
       </div>
       <div class="row">
-        <div class="from-group col-md-6">
+        <div class="from-group col-md-12">
           <label for="newPassord">Select Password</label>
-          <input type="text" class="form-control" id="newPassord" name="password">
-        </div>
-        <div class="from-group col-md-6">
-          <label for="verifyPassword">Re-enter Password</label>
-          <input type="text" class="form-control" id="verifyPassword" name="verifyPassword">
+          <input type="password" class="form-control" id="newPassord" name="password">
         </div>
       </div>
       <hr>
-      <a href="/homepage" class="btn btn-danger" name="cancel">Cancel</a>
-      <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+      <a href="/homepage" class="btn btn-danger">Cancel</a>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
 
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="/js/validation.js"></script>
 {% endblock %}
