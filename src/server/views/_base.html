@@ -23,13 +23,14 @@
     {% endblock %}
   </head>
   <body>
-    <!-- Include header if not landing.html -->
-    {% if not landing.html %}
-      {% include "header.html" %}
-    {% endif %}
-
-      {% block content %}
-      {% endblock %}
+    {% include "header.html" %}
+    <main>
+      <div class="row">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </main>
+    {% include "footer.html" %}
     <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/main.js"></script>
