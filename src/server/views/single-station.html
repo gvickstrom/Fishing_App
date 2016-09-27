@@ -16,24 +16,24 @@
 
     <div class='col-md-6 left_col'>
       <div class="col-md-12">
-        <h3 class='text-center geo' data-lat='{{reports[0].lat}}' data-lon='{{reports[0].lon}}'>{{reports[0].river}} Info</h3>
+        <h3 class='text-center geo' data-lat='{{station.lat}}' data-lon='{{station.lon}}'>{{reports[0].river}} Info</h3>
           <br>
         <ul>
-          <li>latitude: {{weatherPayload.latitude}}</li>
-          <li>longitude: {{weatherPayload.longitude}}</li>
-          <li>current temp: {{weatherPayload.currently.temperature}}</li>
-          <li>current condition: {{weatherPayload.currently.summary}}</li>
-          <li>daily forecast summary: {{weatherPayload.daily.data[0].summary}}</li>
-          <li>daily min temp: {{weatherPayload.daily.data[0].temperatureMin}}</li>
-          <li>daily max temp: {{weatherPayload.daily.data[0].temperatureMax}}</li>
-          <li>daily forecast wind speed: {{weatherPayload.daily.data[0].windSpeed}}</li>
-          <li>daily forecast wind bearing: {{weatherPayload.daily.data[0].windBearing}}</li>
-          <li>daily forecast precip probability: {{weatherPayload.daily.data[0].precipProbability}}</li>
+          <li>latitude: {{station.lat}}</li>
+          <li>longitude: {{station.lon}}</li>
+          <li>current temp: {{weather.currently.temperature}}</li>
+          <li>current condition: {{weather.currently.summary}}</li>
+          <li>daily forecast summary: {{weather.daily.data[0].summary}}</li>
+          <li>daily min temp: {{weather.daily.data[0].temperatureMin}}</li>
+          <li>daily max temp: {{weather.daily.data[0].temperatureMax}}</li>
+          <li>daily forecast wind speed: {{weather.daily.data[0].windSpeed}}</li>
+          <li>daily forecast wind bearing: {{weather.daily.data[0].windBearing}}</li>
+          <li>daily forecast precip probability: {{weather.daily.data[0].precipProbability}}</li>
         </ul>
         <ul>
-          <li>Last Reading: {{reports.reading_date_time | date("DD/M/YY, h:mm a")}}</li>
-          <li>Water Temp (C): 21</li>
-          <li>Flow Rate (CFS): 152</li>
+          <li>Last Reading: {{station.reading_date_time | date("DD/M/YY, h:mm a")}}</li>
+          <!-- <li>Water Temp (C): 21</li> -->
+          <li>Flow Rate (CFS): {{station.flow_rate}}</li>
 
         </ul>
       </div>
