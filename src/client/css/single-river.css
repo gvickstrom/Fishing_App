@@ -9,3 +9,8 @@
 li{
   margin-top: 0rem;
 }
+
+#map{
+  width: 500px;
+  height: 500px;
+}
