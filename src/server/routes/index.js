@@ -1,17 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const queries = require('../db/queries');
-
-// router.get('/', function (req, res, next) {
-//   queries.getRivers(function(err, results) {
-//     var renderObject = {};
-//     if (err) {
-//       renderObject.message = err.message || 'Something terrible happened.';
-//       res.render('error', renderObject);
-//     } else {
-//       renderObject.rivers = results;
-//       res.render('index', renderObject);
-//     }
 const axios = require('axios');
 const knex = require('../db/knex.js');
 
@@ -53,6 +42,30 @@ router.get('/single-river', function (req, res, next) {
     console.log(error);
   });
 
+});
+
+router.get('/usgs', function (req, res, next) {
+  const renderObject = {};
+  axios.get('http://waterservices.usgs.gov/nwis/iv/?format=json&sites=07079300,07081200,07083710,07087050,07091200,07094500,07099970,07099973,07109500,07124000,07130500,07133000,07134180&parameterCd=00064,00065,00010')
+  .then(function (usgsPayload) {
+    var basePayload = usgsPayload.data.value.timeSeries[0].sourceInfo;
+      for (var stationData in basePayload) {
+      console.log(basePayload[stationData].geogLocation);
+    }
+//push into new array, use .reduce to purge the undefined items
+
+// .geoLocation.geogLocation.latitude
+    // var riverData = {
+    //   waterTemp:
+    //   flowRate:
+    //   depth:
+    //   latitude: usgsPayload.data.value.timeSeries[0].sourceInfo.geoLocation.geogLocation.latitude,
+    //   longitude:
+    //   timeStamp:
+    // }
+
+    // renderObject.usgsPayload = usgsPayload.data;
+  });
 });
 
 module.exports = router;
