@@ -1,0 +1,39 @@
+{% extends "_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="/css/report-new.css">
+{% endblock %}
+
+{% block content %}
+
+<div class='container'>
+  <div class="row">
+    <form class="form-inline" action="index.html" method="post">
+      <label for="start-time">Start: </label>
+        <input type="datetime-local" class="form-control orm-inline" id="start-time">
+      <label for="end-time">End: </label>
+        <input type="datetime-local" class="form-control orm-inline" id="end-time">
+    </form>
+    <form class="for-control" action="index.html" method="post">
+      <br>
+      <div class="form-group">
+        <label for="report_text">Please Share Your Fishing Report</label>
+        <br>
+        <textarea class="form-control" rows="12" name="report_text" id="report_text" placeholder="Fishing conditions, which flies worked well, etc."></textarea>
+      </div>
+      <button type="submit" name="report_submit_button" class="btn btn-success">Add New Report</button>
+    </form>
+
+
+    </form>
+  </div>
+
+</div>
+
+{% block scripts %}
+  <script type="text/javascript" src="/js/reports-new.js"></script>
+{% endblock %}
+
+{% endblock %}
