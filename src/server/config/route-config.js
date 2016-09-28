@@ -10,6 +10,7 @@
     const signUp = require('../routes/sign-up');
     const homepage = require('../routes/homepage');
     const sites = require('../routes/sites');
+    const reports = require('../routes/reports');
 
     // *** register routes *** //
     app.use('/', routes);
@@ -17,6 +18,7 @@
     app.use('/sign-up', signUp);
     app.use('/homepage', homepage);
     app.use('/sites', sites);
+    app.use('/reports', reports);
 
   };
 

@@ -6,6 +6,8 @@ exports.up = function(knex, Promise) {
     table.text('report').notNullable();
     table.dateTime('start_time');
     table.dateTime('end_time');
+    table.varchar('lat');
+    table.varchar('lon');
     table.timestamp('created_at').defaultTo(knex.fn.now());
   });
 };
