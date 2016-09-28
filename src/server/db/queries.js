@@ -13,10 +13,10 @@ exports.getRivers = function(callback) {
 
 exports.getRiverSites = function(riverName, callback) {
   knex('stations')
-  .select('site_name')
+  .select('id', 'site_name')
   .where('stations.river', riverName)
-  .then(sites => {
-    callback(null, sites);
+  .then(results => {
+    callback(null, results);
   })
   .catch(err => {
     callback(err);

@@ -1,29 +1,3 @@
-(function () {
-  // console.log('sanity check!');
-
-//select river basin, and this auto populates the sites dropdown
-
-  $('[name="river-basin"]').on('change', function() {
-    var riverName = $('[name="river-basin"]').val();
-    $.ajax({
-      type: 'GET',
-      url: '/sites?river='+riverName,
-      success: function(data) {
-        let dropdown = $('#site-dropdown');
-        dropdown.empty();
-        $.each(data.sites, function(k,v) {
-          var site = v["site_name"]
-          $('#site-dropdown').append($('<option></option>')
-          .text(JSON.stringify(site)));
-        });
-      },
-      error: function(data) {
-        return error;
-      }
-    });
-  });
-})();
-
 $(document).ready(function() {
   addGoogleMapsScript();
 });
