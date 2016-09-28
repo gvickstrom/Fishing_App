@@ -9,31 +9,28 @@
 {% block content %}
 
 <div class='container'>
-  <div class="row">
-    <form class="form-inline" action="index.html" method="post">
-      <label for="start-time">Start: </label>
-        <input type="datetime-local" class="form-control orm-inline" id="start-time">
-      <label for="end-time">End: </label>
-        <input type="datetime-local" class="form-control orm-inline" id="end-time">
-    </form>
-    <form class="for-control" action="index.html" method="post">
-      <br>
-      <div class="form-group">
+  <form class="" action="/reports/report-new" method="POST">
+    <div class="row">
+      <label for="start_time">Start: </label>
+        <input type="datetime-local" class=" start_time" name="start_time">
+      <label for="end_time">End: </label>
+        <input type="datetime-local" class=" end_time" name="end_time">
+      </div>
+    <div class="row">
+      <label for="report_lat">Latitude:</label>
+        <input type="text" class="" name="report_lat" placeholder="39.249">
+      <label for="report_lon">Latitude:</label>
+        <input type="text" class="" name="report_lon" placeholder="-106.348">
+    </div>
         <label for="report_text">Please Share Your Fishing Report</label>
         <br>
-        <textarea class="form-control" rows="12" name="report_text" id="report_text" placeholder="Fishing conditions, which flies worked well, etc."></textarea>
-      </div>
-      <button type="submit" name="report_submit_button" class="btn btn-success">Add New Report</button>
-    </form>
-
-
-    </form>
-  </div>
-
+          <textarea class="report_text" rows="12" name="report_text" name="report_text" placeholder="Fishing conditions, which flies worked well, etc."></textarea>
+      <button type="submit" name="report_submit_button" class="btn btn-success report_submit_button">Add New Report</button>
+  </form>
 </div>
 
 {% block scripts %}
-  <script type="text/javascript" src="/js/reports-new.js"></script>
+  <script type="text/javascript" src="/js/reports.js"></script>
 {% endblock %}
 
 {% endblock %}
