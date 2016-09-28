@@ -1,6 +1,7 @@
 {% block css %}
   <link rel="stylesheet" href="/css/header-footer.css">
 {% endblock %}
+
 <header class="row">
   <nav class="navbar navbar-default header">
     <div class="container-fluid">
@@ -18,17 +19,13 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Link</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-            </ul>
-          </li>
+          <li><a href="/homepage">Home</a></li>
+          {% if user.id === undefined %}
+          <li><a href="/login" data-toggle="modal" data-target=".login">Login / Sign Up</a></li>
+            {% include "modules/login-modal.html" %}
+          {% elif user.id %}
+          <li><a href="/login/logout">Log Out</a></li>
+          {% endif %}
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
