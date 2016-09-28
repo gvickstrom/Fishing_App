@@ -9,18 +9,14 @@
 {% block content %}
 
   <div class="container">
-    <h1>Single River</h1>
+    <h1 class='text-center'>{{station.site_name}}</h1>
     <div class='row'>
-
-
 
     <div class='col-md-6 left_col'>
       <div class="col-md-12">
         <h3 class='text-center geo' data-lat='{{station.lat}}' data-lon='{{station.lon}}'>{{reports[0].river}} Info</h3>
           <br>
         <ul>
-          <li>latitude: {{station.lat}}</li>
-          <li>longitude: {{station.lon}}</li>
           <li>current temp: {{weather.currently.temperature}}</li>
           <li>current condition: {{weather.currently.summary}}</li>
           <li>daily forecast summary: {{weather.daily.data[0].summary}}</li>
@@ -32,22 +28,14 @@
         </ul>
         <ul>
           <li>Last Reading: {{station.reading_date_time | date("DD/M/YY, h:mm a")}}</li>
-          <!-- <li>Water Temp (C): 21</li> -->
           <li>Flow Rate (CFS): {{station.flow_rate}}</li>
 
         </ul>
       </div>
-      <!-- <div class="col-md-12">
-        <img class='placeholder_map' src="http://www.swt.usace.army.mil/portals/41/siteimages/missions/navigation/map.jpg" alt="map_placeholder" />
-      </div> -->
-
       <div id="map">
       </div>
 
     </div>
-
-
-
       <div class='col-md-6 right_col'>
         <h3 class='text-center'>{{ reports | length }} Reports</h4>
           <br>
