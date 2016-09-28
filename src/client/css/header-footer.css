@@ -1,8 +1,19 @@
-.header{
-  background-color: #294606;
+.header {
+  background: #938172;
   border: 0px;
 }
 
-.footer-custom{
-  
+ul li a {
+  color: #020304 !important;
+}
+
+.header-logo {
+  height: auto;
+  width: 5rem;
+  margin: 0 0 0 1.5rem;
+}
+
+.footer-custom {
+  background: #626266;
+  border-radius: 0;
 }

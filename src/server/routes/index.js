@@ -3,7 +3,6 @@ const router = express.Router();
 const queries = require('../db/queries');
 const axios = require('axios');
 const knex = require('../db/knex.js');
-const request = require('request');
 
 router.get('/', function (req, res, next) {
   res.redirect('landing');
