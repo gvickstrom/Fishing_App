@@ -12,6 +12,7 @@
     const homepage = require('../routes/homepage');
     const sites = require('../routes/sites');
     const reports = require('../routes/reports');
+    const singleStation = require('../routes/single-station');
 
     // *** register routes *** //
     app.use('/', routes);
@@ -21,7 +22,7 @@
     app.use('/homepage', homepage);
     app.use('/sites', sites);
     app.use('/reports', reports);
-
+    app.use('/single-station', singleStation);
   };
 
 })(module.exports);

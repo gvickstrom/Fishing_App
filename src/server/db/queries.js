@@ -33,3 +33,16 @@ exports.updateRiverData = function(object, callback) {
     callback(err);
   });
 };
+
+exports.reportUserQuery = function (id) {
+  return knex('users')
+  .join('reports', 'user_id', 'users.id')
+  .where('station_id', id)
+  .select();
+};
+
+exports.singleStation = function (id) {
+  return knex('stations')
+  .where('id', id)
+  .select();
+};
