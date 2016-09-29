@@ -5,6 +5,10 @@ const axios = require('axios');
 const knex = require('../db/knex.js');
 const weather = require('./weather.js');
 
+var globalPayload;
+var fishingReportArr;
+var test;
+
 router.get('/:id', function (req, res, next) {
   const id = req.params.id;
   const renderObject = {};
@@ -18,26 +22,37 @@ router.get('/:id', function (req, res, next) {
         reportArr.push(payload[0][i]);
       }
     }
-  return [reportArr, payload];
-
-})
-.then(reportArr => {
-  let reportIdArr = [];
-  reportArr[0].forEach(function(report){
-    reportIdArr.push(report.id);
-  });
-  queries.reportsNear(reportIdArr)
-  .then(result => {
-    weather.getWeather(result[0].lat, result[0].lon)
-    .then(weather => {
-      renderObject.weather = weather.data;
-      renderObject.station = reportArr[1][1][0];
-      renderObject.reports = result;
-      console.log(renderObject);
-      res.render('single-station', renderObject);
+    return [reportArr, payload];
+  })
+  .then(reportArr => {
+    globalPayload = reportArr[1];
+    // console.log(reportArr[0]);
+    const reportIdArr = reportArr[0].map(function(report) {
+      return report.id;
     });
+    test = reportIdArr;
+  })
+  .then(() => {
+    // console.log(reportIdArr);
+    return queries.reportsNear(test);
+  })
+  .then(result => {
+    fishingReportArr = result;
+    console.log('lat: ', globalPayload[1][0].lat);
+    console.log('lon: ', globalPayload[1][0].lon);
+    return weather.getWeather(globalPayload[1][0].lat, globalPayload[1][0].lon)
+  })
+  .then(weather => {
+    console.log('weather ', weather);
+    renderObject.weather = weather.data;
+    renderObject.station = globalPayload[1][0];
+    renderObject.reports = fishingReportArr;
+    console.log(renderObject);
+    res.render('single-station', renderObject);
+  })
+  .catch((err) => {
+    console.log(err);
   });
-});
 });
 
 
