@@ -13,6 +13,7 @@ router.get('/:id', function (req, res, next) {
   .then(payload => {
     // console.log(payload);
     // queries.distance(payload[1][0].lat, payload[1][0].lon, )
+    console.log('payload: ', payload[0]);
     for (var i = 0; i < payload[0].length; i++) {
       var distance = queries.distance(payload[1][0].lat, payload[1][0].lon, payload[0][i].lat, payload[0][i].lon);
 
