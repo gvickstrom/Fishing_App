@@ -46,27 +46,34 @@ exports.updateRiverData = function(object, callback) {
   });
 };
 
-exports.reportUserQuery = function (id) {
-  return knex('users')
-  .join('reports', 'user_id', 'users.id')
-  .select()
-  .then(results => {
-    for (var i = 0; i < results.length-1; i++) {
-      var lat1 = results[i].lat;
-      var lon1 = results[i].lon;
-      var lat2 = results[i+1].lat;
-      var lon2 = results[i+1].lon;
 
-      var distanceReviewStation = distance(lat1, lon1, lat2, lon2);
+// exports.reportUserQuery = function (id) {
+//   return knex('users')
+//   .join('reports', 'user_id', 'users.id')
+//   .select();
+// };
 
-      if (distanceReviewStation <= 5) {
-        return results
-      }
-    }
-  });
+exports.reportLatLon = function () {
+  return knex('reports')
+  .select('id', 'lat', 'lon')
 };
 
-function distance(lat1, lon1, lat2, lon2, unit) {
+// working reportsNear
+// exports.reportsNear = function (reportIdArr) {
+//   return knex.select().from('reports')
+//   .whereIn('id', reportIdArr)
+// };
+
+exports.reportsNear = function (reportIdArr) {
+  return knex
+  .from('users')
+  .join('reports', 'user_id', 'users.id')
+  .select()
+  .whereIn('reports.id', reportIdArr)
+};
+
+
+exports.distance = function (lat1, lon1, lat2, lon2, unit) {
 	var radlat1 = Math.PI * lat1/180
 	var radlat2 = Math.PI * lat2/180
 	var theta = lon1-lon2
