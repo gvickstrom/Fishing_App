@@ -1,5 +1,20 @@
 (function () {
+
   console.log('boom');
+
+  //button clears the stations table in db
+
+  $('#clear-btn').on('click', function() {
+    window.location.href = '/sites/clear';
+  });
+
+//button updates the data for the specificed river
+
+  $('#update-db-btn').on('click', function() {
+    let riverName = $('[name="river-basin"]').val();
+    window.location.href = '/sites/'+riverName;
+  });
+
 
 //select river basin, then auto populates the sites dropdown menu
 
@@ -21,15 +36,13 @@
       error: function(data) {
         return error;
       }
-    });
+    })
   });
 
 //select river site, redirect to single river page for associated ID
 
 $('[name="river-site"]').on('change', function() {
   let siteID = $('[value]').val();
-  console.log(siteID);
   window.location.href = '/single-station/'+siteID;
 })
-
 })();
