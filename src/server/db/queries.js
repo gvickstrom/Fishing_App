@@ -46,10 +46,18 @@ exports.reportLatLon = function () {
   .select('id', 'lat', 'lon')
 };
 
+// working reportsNear
+// exports.reportsNear = function (reportIdArr) {
+//   return knex.select().from('reports')
+//   .whereIn('id', reportIdArr)
+// };
 
 exports.reportsNear = function (reportIdArr) {
-  return knex.select().from('reports')
-  .whereIn('id', reportIdArr)
+  return knex
+  .from('users')
+  .join('reports', 'user_id', 'users.id')
+  .select()
+  .whereIn('reports.id', reportIdArr)
 };
 
 

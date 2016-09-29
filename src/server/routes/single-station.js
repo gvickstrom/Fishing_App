@@ -31,20 +31,40 @@ router.get('/:id', function (req, res, next) {
   //     res.render('single-station', renderObject);
   // });
   // renderObject.reports = payload[0];
-  return reportArr;
+  // console.log('reportArr: ', reportArr);
+  return [reportArr, payload];
 
 })
 .then(reportArr => {
-  // console.log('hello');
+  // console.log('0 ', reportArr[0], '1 ', reportArr[1])
+  // console.log('1.1 ', reportArr[1][1]);
+  // console.log('reportArr @ 2nd .then: ', reportArr[0]);
+  // console.log('payLoad: ', reportArr[1]);
   let reportIdArr = [];
-  reportArr.forEach(function(report){
+  reportArr[0].forEach(function(report){
     reportIdArr.push(report.id);
   });
-  return queries.reportsNear(reportIdArr)
-})
-.then((reason) => {
-    console.log('all the reports', reason);
+
+  // var results = queries.reportsNear(reportIdArr);
+  // console.log('results: ', results);
+
+  queries.reportsNear(reportIdArr)
+  .then(result => {
+    // console.log(result);
+    // console.log('single_station: ', reportArr);
+    // console.log('payload',reportArr[1]);
+    // console.log('result', result[0]);
+    // weather.getWeather(result[0].lat)
+    weather.getWeather(result[0].lat, result[0].lon)
+    .then(weather => {
+      renderObject.weather = weather.data;
+      renderObject.station = reportArr[1][1][0];
+      renderObject.reports = result;
+      console.log(result);
+      res.render('single-station', renderObject);
+    });
   });
+});
 });
 
 module.exports = router;
