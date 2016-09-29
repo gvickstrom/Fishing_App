@@ -22,22 +22,24 @@ function newMap (lat, lng, map) {
 }
 
 function initMap (lat, lng) {
-  console.log('initMap');
+  console.log('initMap hit');
   var lat = $(".geo").attr("data-lat")
   var lng = $(".geo").attr("data-lon")
   var myLatLng = new google.maps.LatLng(lat, lng);
   var map = newMap(lat,lng);
   var marker = newMarker(myLatLng, map,'Station', greenMarker);
+  var greenMarker = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
 }
 
 function newMarker(pos,map,title,icon) {
+  console.log('newMarker');
   var marker = new google.maps.Marker({
     position: pos,
     map: map,
     title: title,
     icon: icon
   });
-  // distanceAway(pos, map, title, numBikesAvail);
+
 
   return marker;
 }
