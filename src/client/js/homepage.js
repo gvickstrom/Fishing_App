@@ -33,7 +33,7 @@
           .text(JSON.stringify(site)));
         });
       },
-      error: function(data) {
+      error: function(error) {
         return error;
       }
     })
@@ -45,4 +45,5 @@ $('[name="river-site"]').on('change', function() {
   let siteID = $('[value]').val();
   window.location.href = '/single-station/'+siteID;
 })
+
 })();
