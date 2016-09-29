@@ -7,7 +7,7 @@ const knex = require('../db/knex.js');
 
 
 router.get('/report-new', function (req, res, next) {
-  const renderObject = {};
+  const { renderObject } = req;
   res.render('report-new', renderObject);
 });
 
