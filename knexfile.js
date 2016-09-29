@@ -22,3 +22,14 @@ module.exports = {
     }
   }
 };
+production: {
+  client: 'postgresql',
+  connection: process.env.postgresql-triangular-96974,
+  migrations: {
+    directory: __dirname + '/src/server/db/migrations'
+  },
+  seeds: {
+    directory: __dirname + '/src/server/db/seeds'
+  }
+}
+};
