@@ -7,9 +7,9 @@
     // *** routes *** //
     const routes = require('../routes/index');
     const landing = require('../routes/landing');
-    const login = require('../routes/login');
     const signUp = require('../routes/sign-up');
     const homepage = require('../routes/homepage');
+    const logout = require('../routes/logout');
     const sites = require('../routes/sites');
     const cookieSession = require('cookie-session');
     const reports = require('../routes/reports');
@@ -28,15 +28,15 @@
         req.renderObject.user = req.session.user;
         next();
       } else {
-        next()
+        next();
       }
     });
 
     app.use('/', routes);
     app.use('/landing', landing);
-    app.use('/login', login);
     app.use('/sign-up', signUp);
     app.use('/homepage', homepage);
+    app.use('/logout', logout);
     app.use('/sites', sites);
     app.use('/reports', reports);
     app.use('/single-station', singleStation);

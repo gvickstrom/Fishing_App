@@ -21,10 +21,10 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/homepage">Home</a></li>
           {% if user.id === undefined %}
-          <li><a href="/login" data-toggle="modal" data-target=".login">Login / Sign Up</a></li>
+          <li><a href="" class="sign-in" data-toggle="modal" data-target=".login">Login / Sign Up</a></li>
             {% include "modules/login-modal.html" %}
           {% elif user.id %}
-          <li><a href="/login/logout">Log Out</a></li>
+          <li><a href="/logout">Log Out</a></li>
           {% endif %}
         </ul>
       </div><!-- /.navbar-collapse -->
