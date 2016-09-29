@@ -32,7 +32,7 @@
         <select multiple size="18" class="form-control dropdown" name="river-site" id="site-dropdown">
           <option>Select a Site</option>
           {% for site in sites %}
-          <option>{{site.site}}</option>
+          <option value="{{ site.id }}">{{site.site}}</option>
           {% endfor %}
         </select>
       </div>
