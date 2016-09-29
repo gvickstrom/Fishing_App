@@ -12,7 +12,7 @@
 
   $('#update-db-btn').on('click', function() {
     let riverName = $('[name="river-basin"]').val();
-    window.location.href = '/sites/'+riverName;
+    window.location.href = '/sites/' + riverName;
   });
 
 
@@ -29,7 +29,7 @@
         $.each(data.sites, function(k,v) {
           let site = v["site_name"];
           let siteID = v["id"];
-          $('#site-dropdown').append($('<option value='+siteID+'></option>')
+          $('#site-dropdown').append($('<option value=' + siteID + '></option>')
           .text(JSON.stringify(site)));
         });
       },
@@ -41,9 +41,9 @@
 
 //select river site, redirect to single river page for associated ID
 
-$('[name="river-site"]').on('change', function() {
-  let siteID = $('[value]').val();
-  window.location.href = '/single-station/'+siteID;
+$('#site-dropdown').on('change', function() {
+  let siteID = $('#site-dropdown').val();
+  window.location.href = '/single-station/' + siteID;
 })
 
 })();

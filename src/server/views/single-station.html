@@ -9,55 +9,57 @@
 {% block content %}
 
   <div class="container">
-    <h1 class='text-center'>{{station.site_name}}</h1>
-    <div class='row'>
-
-    <div class='col-md-6 left_col'>
+    <h1>{{ station.site_name }}</h1>
+    <div class="row">
+    <div class="col-md-6 left_col">
       <div class="col-md-12">
-        <h3 class='text-center geo' data-lat='{{station.lat}}' data-lon='{{station.lon}}'>{{station.site_name}} Info</h3>
-          <br>
-        <ul>
-          <li>current temp: {{weather.currently.temperature}}</li>
-          <li>current condition: {{weather.currently.summary}}</li>
-          <li>daily forecast summary: {{weather.daily.data[0].summary}}</li>
-          <li>daily min temp: {{weather.daily.data[0].temperatureMin}}</li>
-          <li>daily max temp: {{weather.daily.data[0].temperatureMax}}</li>
-          <li>daily forecast wind speed: {{weather.daily.data[0].windSpeed}}</li>
-          <li>daily forecast wind bearing: {{weather.daily.data[0].windBearing}}</li>
-          <li>daily forecast precip probability: {{weather.daily.data[0].precipProbability}}</li>
-        </ul>
-        <ul>
-          <li>Last Reading: {{station.reading_date_time | date("DD/M/YY, h:mm a")}}</li>
-          <li>Flow Rate (CFS): {{station.flow_rate}}</li>
-
-        </ul>
+        <h3 class="text-center geo" data-lat="{{station.lat}}" data-lon="{{station.lon}}">{{reports[0].river}} Info</h3>
+        <!-- <br> -->
+        <div class="row">
+          <h6 class="col-md-7">Current Temperature: <span class="text-primary">Min: {{ weather.daily.data[0].temperatureMin }}&deg; F </span>/ <span class="text-danger">Max: {{ weather.daily.data[0].temperatureMax }}&deg; F </span></h6>
+          <h6 class="col-md-5">Current Conditions: <span class="text-success">{{ weather.currently.summary }}</span></h6>
+          <div class="col-md-12">
+            <div class="progress">
+              {% if weather.currently.temperature < 33 %}
+              <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{weather.currently.temperature}}" aria-valuemin="-20" aria-valuemax="32" style="width:{{weather.currently.temperature}}%">{{weather.currently.temperature}}&deg; F</div>
+              {% elif weather.currently.temperature >= 33 and weather.currently.temperature <= 80 %}
+              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{weather.currently.temperature}}" aria-valuemin="33" aria-valuemax="80" style="width:{{weather.currently.temperature}}%">{{weather.currently.temperature}}&deg; F</div>
+              {% elif weather.currently.temperature > 80 %}
+              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{weather.currently.temperature}}" aria-valuemin="81" aria-valuemax="120" style="width:{{weather.currently.temperature}}%">{{weather.currently.temperature}}&deg; F</div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+          <h6>Forecast: {{ weather.daily.data[0].precipProbability }}&#37; chance of precipatation with {{ weather.daily.data[0].summary }}</h6>
+          <h6>Current Wind: Speed: {{ weather.daily.data[0].windSpeed }} mph/ Bearing: {{ weather.daily.data[0].windBearing }}&deg;</h6>
+          <h6>Flow Rate: (CFS) {{station.flow_rate}}</h6>
+          <h6>Recorded: {{station.reading_date_time | date("dddd MMMM do YYYY @ h:mm a")}}</h6>
       </div>
-      <div id="map">
-      </div>
+      <div class="col-md-12" id="map"></div>
 
     </div>
-      <div class='col-md-6 right_col'>
-        <h3 class='text-center'>{{ reports | length }} Reports</h4>
+      <div class="col-md-6 right_col">
+        <h3 class="text-center">{{ reports | length }} Reports</h3>
           <br>
-        <div class='col-md-12'>
+        <div class="col-md-12">
           <a href="/reports/report-new" class="btn btn-primary btn-block">Add Report</a>
-          <div class='col-md-12'>
+          <div class="col-md-12">
             <br>
           {% for report in reports %}
 
               <div class="row">
                 <div class="col-md-3">
-                  <p class='small_text'>
+                  <p class="small_text">
                     <strong>Name:</strong> {{ report.first_name}} {{ report.last_name | truncate(1, true, '.') }}
                   </p>
                 </div>
                 <div class="col-md-4">
-                  <p class='small_text'>
+                  <p class="small_text">
                     <strong>Start:</strong> {{ report.start_time | date("DD/M/YY, h:mm a")}}
                   </p>
                 </div>
                 <div class="col-md-4">
-                  <p class='small_text'>
+                  <p class="small_text">
                     <strong>End:</strong> {{report.end_time | date("DD/M/YY, h:mm a")}}
                   </p>
                 </div>
@@ -76,5 +78,6 @@
 
     </div>
   </div>
+</div>
 
 {% endblock %}
