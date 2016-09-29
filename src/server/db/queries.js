@@ -1,7 +1,19 @@
 const knex = require('./knex');
 
+//drop existing stations table and replace with empty stations table
+
+exports.clearStationsTable = function(callback) {
+  knex('stations').del()
+  .then(results => {
+    callback(null, results)
+  })
+  .catch(err => {
+    callback(err)
+  });
+};
+
 exports.getRivers = function(callback) {
-  knex('stations')
+  knex('rivers')
   .distinct('river')
   .then(rivers => {
     callback(null, rivers);

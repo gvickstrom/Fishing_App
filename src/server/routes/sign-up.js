@@ -5,8 +5,8 @@ const bcrypt = require('bcrypt');
 const salt = bcrypt.genSaltSync(10);
 
 router.get('/', (req, res, next) => {
-  const renderObject = {};
-  renderObject.title = 'Anglers: Sign Up'
+  const { renderObject } = req;
+  renderObject.title = 'Anglers: Sign Up';
   res.render('sign-up', renderObject);
 });
 

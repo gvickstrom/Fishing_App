@@ -5,10 +5,6 @@ const axios = require('axios');
 const knex = require('../db/knex.js');
 const weather = require('./weather.js');
 
-router.get('/', function (req, res, next) {
-  res.redirect('landing');
-});
-
 router.get('/:id', function (req, res, next) {
   const id = req.params.id;
   const renderObject = {};
