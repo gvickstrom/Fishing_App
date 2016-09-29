@@ -11,11 +11,12 @@ router.get('/:id', function (req, res, next) {
   const reportArr = [];
   Promise.all([queries.reportLatLon(), queries.singleStation(id)])
   .then(payload => {
+    // console.log(payload);
     // queries.distance(payload[1][0].lat, payload[1][0].lon, )
     for (var i = 0; i < payload[0].length; i++) {
       var distance = queries.distance(payload[1][0].lat, payload[1][0].lon, payload[0][i].lat, payload[0][i].lon);
 
-      if (distance <= 5) {
+      if (distance >= 0) {
         reportArr.push(payload[0][i]);
       }
     }
@@ -32,6 +33,7 @@ router.get('/:id', function (req, res, next) {
 
 })
 .then(reportArr => {
+  // console.log('reportArr: ', reportArr);
   // console.log('0 ', reportArr[0], '1 ', reportArr[1])
   // console.log('1.1 ', reportArr[1][1]);
   // console.log('reportArr @ 2nd .then: ', reportArr[0]);
