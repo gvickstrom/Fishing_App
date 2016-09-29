@@ -13,6 +13,9 @@ exports.seed = function(knex, Promise) {
         }),
         knex('rivers').insert({
           river: 'Blue'
+        }),
+        knex('rivers').insert({
+          river: 'Roaring Fork'
         })
       ]);
     });

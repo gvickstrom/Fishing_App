@@ -124,4 +124,38 @@ router.get('/Blue', function (req, res, next) {
 
 });
 
+router.get('/Roaring%20Fork', function (req, res, next) {
+  const renderObject = {};
+  request('http://waterservices.usgs.gov/nwis/iv/?format=json&sites=09072550,09073005,09073300,09073400,09074000,09074500,09075400,09078141,09078475,09079450,09080400,09081000,09081600,09085000&parameterCd=00060', (err, res, body) => {
+    if(!err && res.statusCode == 200) {
+      const usgsPayload = JSON.parse(body);
+      const parsedUSGS = usgsPayload.value.timeSeries;
+
+      for (var i = 0; i < parsedUSGS.length; i++) {
+        var stationData = {
+          river: 'Roaring Fork',
+          site_name: parsedUSGS[i].sourceInfo.siteName,
+          flow_rate: parsedUSGS[i].values[0].value[0].value,
+          lat: parsedUSGS[i].sourceInfo.geoLocation.geogLocation.latitude,
+          lon: parsedUSGS[i].sourceInfo.geoLocation.geogLocation.longitude,
+          reading_date_time: parsedUSGS[i].values[0].value[0].dateTime
+        }
+        queries.updateRiverData(stationData, function (req, res, next) {
+          if (err) {
+            var returnObject = {};
+            returnObject.message = err.message || 'Data not added';
+            res.render('error', returnObject);
+          } else {
+            let returnObject = {};
+            returnObject.message = 'Data succesfully added!';
+          }
+        });
+      }
+    }
+  })
+  res.redirect('/homepage');
+
+});
+
+
 module.exports = router;
