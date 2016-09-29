@@ -12,20 +12,38 @@ router.get('/', function (req, res, next) {
 router.get('/:id', function (req, res, next) {
   const id = req.params.id;
   const renderObject = {};
-  var latitude;
-  var longitude;
-
-  Promise.all([queries.reportUserQuery(id), queries.singleStation(id)])
+  const reportArr = [];
+  Promise.all([queries.reportLatLon(), queries.singleStation(id)])
   .then(payload => {
-  weather.getWeather(payload[1][0].lat, payload[1][0].lon)
-  .then(weatherPayload => {
-      renderObject.reports = payload[0];
-      renderObject.station = payload[1][0];
-      renderObject.weather = weatherPayload.data;
-      res.render('single-station', renderObject);
+    // queries.distance(payload[1][0].lat, payload[1][0].lon, )
+    for (var i = 0; i < payload[0].length; i++) {
+      var distance = queries.distance(payload[1][0].lat, payload[1][0].lon, payload[0][i].lat, payload[0][i].lon);
+
+      if (distance <= 5) {
+        reportArr.push(payload[0][i]);
+      }
+    }
+  // .then(weatherPayload => {
+  //   console.log(weatherPayload);
+  //     renderObject.reports = payload[0];
+  //     renderObject.station = payload[1][0];
+  //     renderObject.weather = weatherPayload.data;
+  //     res.render('single-station', renderObject);
+  // });
+  // renderObject.reports = payload[0];
+  return reportArr;
+
+})
+.then(reportArr => {
+  // console.log('hello');
+  let reportIdArr = [];
+  reportArr.forEach(function(report){
+    reportIdArr.push(report.id);
   });
-  }, reason => {
-    console.log('error ', reason);
+  return queries.reportsNear(reportIdArr)
+})
+.then((reason) => {
+    console.log('all the reports', reason);
   });
 });
 
