@@ -36,7 +36,7 @@
       error: function(error) {
         return error;
       }
-    })
+    });
   });
 
 //select river site, redirect to single river page for associated ID
@@ -44,6 +44,6 @@
 $('#site-dropdown').on('change', function() {
   let siteID = $('#site-dropdown').val();
   window.location.href = '/single-station/' + siteID;
-})
+});
 
 })();

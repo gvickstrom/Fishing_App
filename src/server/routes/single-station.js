@@ -12,7 +12,7 @@ var reportsExport;
 
 router.get('/:id', function (req, res, next) {
   const id = req.params.id;
-  const renderObject = {};
+  const { renderObject } = {};
   const reportArr = [];
   Promise.all([queries.reportLatLon(), queries.singleStation(id)])
   .then(payload => {
