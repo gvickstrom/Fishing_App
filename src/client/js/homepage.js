@@ -44,6 +44,8 @@
 $('#site-dropdown').on('change', function() {
   let siteID = $('#site-dropdown').val();
   window.location.href = '/single-station/' + siteID;
-})
+});
+
+
 
 })();
