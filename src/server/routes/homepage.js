@@ -22,7 +22,7 @@ router.post('/', (req, res, next) => {
   const loginName = req.body.login_username;
   const loginPassword = req.body.login_password;
 
-  knex('users').select()
+  knex('users').where('username', loginName)
   .then((data) => {
     const passCompare = bcrypt.compareSync(loginPassword, data[0].password);
     if (data[0].username === loginName && passCompare === true) {
