@@ -1,13 +1,10 @@
 html,
 body {
   margin: 0 auto;
-  padding: 0 auto;
+  background: #FEFFFB;
 }
 
-.btn {
-  border-radius: 0;
-}
-
-.form-group input {
-  border-radius: 0;
+main {
+  margin-top: 5rem;
+  min-height: 75.5vh;
 }
