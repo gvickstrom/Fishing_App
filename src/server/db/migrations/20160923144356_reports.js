@@ -1,7 +1,6 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('reports', (table) => {
     table.increments();
-    table.integer('station_id').notNullable().references('id').inTable('stations');
     table.integer('user_id').notNullable().references('id').inTable('users');
     table.text('report').notNullable();
     table.dateTime('start_time');
