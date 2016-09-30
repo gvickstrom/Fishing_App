@@ -14,7 +14,6 @@ router.get('/report-new', function (req, res, next) {
 router.post('/report-new', function (req, res, next) {
   console.log('server side hit');
   knex('reports').insert({
-    station_id: req.body.station_id,
     user_id: 1,
     start_time: req.body.start_time,
     end_time: req.body.end_time,
