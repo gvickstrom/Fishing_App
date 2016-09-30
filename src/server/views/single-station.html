@@ -13,35 +13,31 @@
     <div class="row">
       <div class="col-xs-2 col-sm-2 col-md-2">
         <h6 class="text-right min-max">
-        <span class="text-primary">Min: {{ weather.daily.data[0].temperatureMin }}&deg; F</span>
+        <span class="text-primary">Min: {{ weather.daily.data[0].temperatureMin | round }}&deg; F</span>
       </h6>
       </div>
       <div class="col-xs-8 col-sm-8 col-md-8">
         <div class="progress">
           {% if weather.currently.temperature < 33 %}
-          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{weather.currently.temperature}}" aria-valuemin="-20" aria-valuemax="32" style="width:{{weather.currently.temperature}}%">{{weather.currently.temperature}}&deg; F</div>
+          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{weather.currently.temperature}}" aria-valuemin="-20" aria-valuemax="32" style="width:{{weather.currently.temperature}}%">Current: {{weather.currently.temperature | round }}&deg; F</div>
           {% elif weather.currently.temperature >= 33 and weather.currently.temperature <= 60 %}
-          <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="{{weather.currently.temperature}}" aria-valuemin="33" aria-valuemax="80" style="width:{{weather.currently.temperature}}%">{{weather.currently.temperature}}&deg; F</div>
+          <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="{{weather.currently.temperature}}" aria-valuemin="33" aria-valuemax="80" style="width:{{weather.currently.temperature}}%">Current: {{weather.currently.temperature | round }}&deg; F</div>
           {% elif weather.currently.temprature > 60 and weather.currently.temprature < 80 %}
-          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{weather.currently.temperature}}" aria-valuemin="33" aria-valuemax="80" style="width:{{weather.currently.temperature}}%">{{weather.currently.temperature}}&deg; F</div>
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{weather.currently.temperature}}" aria-valuemin="33" aria-valuemax="80" style="width:{{weather.currently.temperature}}%">Current: {{weather.currently.temperature | round }}&deg; F</div>
           {% elif weather.currently.temperature >= 80 %}
-          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{weather.currently.temperature}}" aria-valuemin="81" aria-valuemax="120" style="width:{{weather.currently.temperature}}%">{{weather.currently.temperature}}&deg; F</div>
+          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{weather.currently.temperature}}" aria-valuemin="81" aria-valuemax="120" style="width:{{weather.currently.temperature}}%">Current: {{weather.currently.temperature | round }}&deg; F</div>
           {% endif %}
         </div>
       </div>
       <div class="col-xs-2 col-sm-2 col-md-2">
         <h6 class="text-left min-max">
-          <span class="text-danger">Max: {{ weather.daily.data[0].temperatureMax }}&deg; F</span>
+          <span class="text-danger">Max: {{ weather.daily.data[0].temperatureMax  | round }}&deg; F</span>
         </h6>
       </div>
     </div>
     <div class="row">
       <h6 class="col-md-4 text-left">Todays Forecast: {{ weather.daily.data[0].summary }}</h6>
-      {% if weather.daily.data[0].precipProbability < 1 %}
-      <h6 class="col-md-4 text-center">Chance of Precipatation: 0&#37;</h6>
-      {% else %}
-      <h6 class="col-md-4 text-center">Chance of Precipatation: {{ weather.daily.data[0].precipProbability }}&#37;</h6>
-      {% endif %}
+      <h6 class="col-md-4 text-center">Chance of Precipatation: {{ weather.daily.data[0].precipProbability | round }}&#37;</h6>
       <h6 class="col-md-4 text-right">Current Wind: Speed: {{ weather.daily.data[0].windSpeed }} mph/ Bearing: {{ weather.daily.data[0].windBearing }}&deg;</h6>
     </div>
     <hr>
@@ -53,11 +49,11 @@
       <!-- Map -->
       <div class="col-md-12 map" id="map"></div>
       <!-- *** -->
-    <!-- <div class="col-md-6 left_col">
+    <div class="col-md-6 left_col">
       <div class="col-md-12">
         <h3 class="text-center geo" data-lat="{{station.lat}}" data-lon="{{station.lon}}">{{reports[0].river}} Info</h3>
       </div>
-    </div> -->
+    </div>
     <div class="row">
       <div class="col-md-12">
         <h3 class="col-md-6">Total Reports: {{ reports | length }}</h3>
