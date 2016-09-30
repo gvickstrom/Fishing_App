@@ -25,7 +25,7 @@
         <button type="button" name="button" class="btn btn-primary" id="clear-btn">Clear Dataset</button>
       </div>
       <div class="drop-down col-md-12">
-        <select multiple size="18" class="form-control dropdown site-dropdown" name="river-site">
+        <select multiple size="18" class="form-control dropdown site-dropdown" name="river-site" id="site-dropdown">
           <option>Select a Site</option>
           {% for site in sites %}
           <option value="{{ site.id }}">{{site.site}}</option>
