@@ -10,7 +10,7 @@ function addGoogleMapsScript () {
 }
 
 function newMap (lat, lng, map) {
-  console.log('newMap');
+  console.log('newMap hit', 'lat: ', lat, 'lng: ', lng);
   myLatLng = new google.maps.LatLng(lat, lng);
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
@@ -32,6 +32,7 @@ function initMap (lat, lng) {
   console.log('initMap hit');
   var lat = $(".geo").attr("data-lat")
   var lng = $(".geo").attr("data-lon")
+  console.log('initMap lat: ', lat);
   var myLatLng = new google.maps.LatLng(lat, lng);
   var map = newMap(lat,lng);
   var marker = newMarker(myLatLng, map,'Station');
@@ -47,9 +48,9 @@ function parseStations(map, reports) {
   })
 }
 
-google.maps.event.addListener(map, 'click', function( event ){
-  alert( "Latitude: "+event.latLng.lat()+" "+", longitude: "+event.latLng.lng() );
-});
+// google.maps.event.addListener(map, 'click', function( event ){
+//   alert( "Latitude: "+event.latLng.lat()+" "+", longitude: "+event.latLng.lng() );
+// });
 
 function newMarker(pos, map, title, icon) {
   console.log('newMarker');
