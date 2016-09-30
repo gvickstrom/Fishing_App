@@ -8,6 +8,7 @@ const weather = require('./weather.js');
 var globalPayload;
 var fishingReportArr;
 var test;
+var reportsExport;
 
 router.get('/:id', function (req, res, next) {
   const id = req.params.id;
@@ -15,10 +16,11 @@ router.get('/:id', function (req, res, next) {
   const reportArr = [];
   Promise.all([queries.reportLatLon(), queries.singleStation(id)])
   .then(payload => {
+    console.log(payload);
     for (var i = 0; i < payload[0].length; i++) {
       var distance = queries.distance(payload[1][0].lat, payload[1][0].lon, payload[0][i].lat, payload[0][i].lon);
 
-      if (distance >= 0) {
+      if (distance <= 50) {
         reportArr.push(payload[0][i]);
       }
     }
@@ -39,12 +41,11 @@ router.get('/:id', function (req, res, next) {
     return weather.getWeather(globalPayload[1][0].lat, globalPayload[1][0].lon);
   })
   .then(weather => {
-    console.log('weather ', weather);
     renderObject.weather = weather.data;
     renderObject.station = globalPayload[1][0];
-    // renderObject.reports = fishingReportArr;
-    renderObject.reports = JSON.stringify(fishingReportArr);
-    console.log('renderObject.reports: ', renderObject.reports);
+    renderObject.reports = fishingReportArr;
+    console.log('reprts: ', renderObject.reports);
+    renderObject.reportsExport = JSON.stringify(fishingReportArr);
     res.render('single-station', renderObject);
   })
   .catch((err) => {
