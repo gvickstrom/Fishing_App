@@ -1,0 +1,27 @@
+{% block css %}
+  <link rel="stylesheet" href="/css/header-footer-new.css">
+{% endblock %}
+
+<header>
+
+    <div class="custom-header">
+
+      <h1><a href="/homepage"><span><img src="/media/fishing-fish-icon.png" class="header-logo"></span> Anglers</a></h1>
+
+      <nav class="text-center">
+        <a href="/homepage">Home</a>
+        <!-- <a href="#">About</a>
+        <a href="#">Contact</a> -->
+        {% if user.id === undefined %}
+        <a href="" class="sign-in" data-toggle="modal" data-target=".login">Login</a>
+          {% include "modules/login-modal.html" %}
+        <a href="/sign-up">Sign Up</a>
+        {% elif user.id %}
+        <!-- <a href="#">Account</a> -->
+        <a href="/logout">Log Out</a>
+        {% endif %}
+      </nav>
+
+    </div>
+
+  </header>

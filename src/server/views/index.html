@@ -8,10 +8,6 @@
 
 {% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<div class="container">
-  <div class="row">
     <div class="col-md-6">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2099235.2824166366!2d-106.7744182121336!3d38.9807314135043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x874014749b1856b7%3A0xc75483314990a7ff!2sColorado!5e1!3m2!1sen!2sus!4v1474954500560" width="550" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
@@ -29,7 +25,7 @@
         <button type="button" name="button" class="btn btn-primary" id="clear-btn">Clear Dataset</button>
       </div>
       <div class="drop-down col-md-12">
-        <select multiple size="18" class="form-control dropdown" name="river-site" id="site-dropdown">
+        <select multiple size="18" class="form-control dropdown site-dropdown" name="river-site">
           <option>Select a Site</option>
           {% for site in sites %}
           <option value="{{ site.id }}">{{site.site}}</option>
@@ -37,10 +33,7 @@
         </select>
       </div>
     </div>
-  </div>
-</div>
 
-</html>
 {% endblock %}
 
 {% block scripts %}
