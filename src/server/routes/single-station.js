@@ -12,7 +12,7 @@ var reportsExport;
 
 router.get('/:id', function (req, res, next) {
   const id = req.params.id;
-  const { renderObject } = {};
+  const renderObject = {};
   const reportArr = [];
   Promise.all([queries.reportLatLon(), queries.singleStation(id)])
   .then(payload => {
@@ -44,7 +44,7 @@ router.get('/:id', function (req, res, next) {
     renderObject.weather = weather.data;
     renderObject.station = globalPayload[1][0];
     renderObject.reports = fishingReportArr;
-    console.log('reprts: ', renderObject.reports);
+    console.log('reprts: s,dfns.mdf.as,mfna.s,fdmn', renderObject.reports);
     renderObject.reportsExport = JSON.stringify(fishingReportArr);
     res.render('single-station', renderObject);
   })
