@@ -3,7 +3,7 @@
 {% block title %}{% endblock %}
 
 {% block css %}
-  <link rel="stylesheet" href="/css/report-new.css">
+<link rel="stylesheet" href="/css/report-new.css">
 {% endblock %}
 
 {% block content %}
@@ -26,11 +26,16 @@
       <br>
         <textarea class="report_text" rows="12" name="report_text" name="report_text" placeholder="Fishing conditions, which flies worked well, etc."></textarea>
       <button type="submit" name="report_submit_button" class="btn btn-success report_submit_button">Add New Report</button>
+<<<<<<< HEAD
+=======
+
+      <input type="hidden" name="id" value="{{ user.id }}">
+>>>>>>> ef723aecb7f73300c8f9a48352d9e302951b47fa
   </form>
 </div>
 
 {% block scripts %}
-  <script type="text/javascript" src="/js/reports.js"></script>
+<script type="text/javascript" src="/js/reports.js"></script>
 {% endblock %}
 
 {% endblock %}
