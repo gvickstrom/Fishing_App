@@ -12,11 +12,10 @@ var reportsExport;
 
 router.get('/:id', function (req, res, next) {
   const id = req.params.id;
-  const { renderObject } = {};
+  const { renderObject } = req;
   const reportArr = [];
   Promise.all([queries.reportLatLon(), queries.singleStation(id)])
   .then(payload => {
-    console.log(payload);
     for (var i = 0; i < payload[0].length; i++) {
       var distance = queries.distance(payload[1][0].lat, payload[1][0].lon, payload[0][i].lat, payload[0][i].lon);
 
@@ -44,7 +43,6 @@ router.get('/:id', function (req, res, next) {
     renderObject.weather = weather.data;
     renderObject.station = globalPayload[1][0];
     renderObject.reports = fishingReportArr;
-    console.log('reprts: ', renderObject.reports);
     renderObject.reportsExport = JSON.stringify(fishingReportArr);
     res.render('single-station', renderObject);
   })
