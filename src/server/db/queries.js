@@ -46,17 +46,29 @@ exports.updateRiverData = function(object, callback) {
   });
 };
 
-
-// exports.reportUserQuery = function (id) {
-//   return knex('users')
-//   .join('reports', 'user_id', 'users.id')
-//   .select();
-// };
+exports.getDataFromTwoTables = function (tableOne, tableTwo, callback) {
+  var response = {};
+  knex(tableOne)
+  .then(results => {
+    response.first = results;
+    knex(tableTwo)
+    .then(data => {
+      response.second = data;
+      callback(null, response);
+    })
+  }).catch(err => {
+    callback(err);
+  });
+};
 
 exports.reportLatLon = function () {
   return knex('reports')
   .select('id', 'lat', 'lon')
 };
+
+exports.getStations = function () {
+  return knex('stations')
+}
 
 // working reportsNear
 // exports.reportsNear = function (reportIdArr) {
