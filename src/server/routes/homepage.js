@@ -6,16 +6,34 @@ const bcrypt = require('bcrypt');
 const salt = bcrypt.genSaltSync(10);
 
 router.get('/', function (req, res, next) {
-  queries.getRivers(function(err, results) {
+  queries.getDataFromTwoTables('rivers', 'stations', function (err, result) {
     const { renderObject } = req;
     if (err) {
-      renderObject.message = err.message || 'Something terrible happened.';
-      res.render('error', renderObject);
+      console.log(err);
     } else {
-      renderObject.rivers = results;
+      renderObject.rivers = result.first;
+      renderObject.stationsExport = JSON.stringify(result.second);
       res.render('index', renderObject);
     }
-  });
+  })
+  // console.log('get homepage');
+  // Promise.all([
+  //   queries.getRivers(function(err, results) {
+  //     const { renderObject } = req;
+  //     if (err) {
+  //       renderObject.message = err.message || 'Something terrible happened.';
+  //       res.render('error', renderObject);
+  //     } else {
+  //       renderObject.rivers = results;
+  //       console.log('results: ', results);
+  //       res.render('index', renderObject);
+  //     }
+  //   }),
+  //   queries.getStations()
+  // ])
+  // .then(payload => {
+  //   console.log('payload: ', payload);
+  // })
 });
 
 router.post('/', (req, res, next) => {
