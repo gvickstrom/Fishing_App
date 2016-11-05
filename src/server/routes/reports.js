@@ -12,9 +12,8 @@ router.get('/report-new', function (req, res, next) {
 });
 
 router.post('/report-new', function (req, res, next) {
-  console.log('server side hit');
   knex('reports').insert({
-    user_id: 1,
+    user_id: req.body.id,
     start_time: req.body.start_time,
     end_time: req.body.end_time,
     report: req.body.report_text,
@@ -22,7 +21,6 @@ router.post('/report-new', function (req, res, next) {
     lon: req.body.report_lon
   })
   .then((results) => {
-    console.log('results ', results);
     res.redirect('/homepage');
   })
   .catch((err) => {
