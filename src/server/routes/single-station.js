@@ -14,7 +14,7 @@ router.get('/:id', function (req, res, next) {
   const id = req.params.id;
   const { renderObject } = req;
   const reportArr = [];
-  Promise.all([queries.reportLatLon(), queries.singleStation(id)])
+  Promise.all([queries.reportLatLon(), queries.singleItem('stations', id)])
   .then(payload => {
     for (var i = 0; i < payload[0].length; i++) {
       var distance = queries.distance(payload[1][0].lat, payload[1][0].lon, payload[0][i].lat, payload[0][i].lon);

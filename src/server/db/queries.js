@@ -70,12 +70,6 @@ exports.getStations = function () {
   return knex('stations')
 }
 
-// working reportsNear
-// exports.reportsNear = function (reportIdArr) {
-//   return knex.select().from('reports')
-//   .whereIn('id', reportIdArr)
-// };
-
 exports.reportsNear = function (reportIdArr) {
   return knex
   .from('users')
@@ -83,7 +77,6 @@ exports.reportsNear = function (reportIdArr) {
   .select()
   .whereIn('reports.id', reportIdArr);
 };
-
 
 exports.distance = function (lat1, lon1, lat2, lon2, unit) {
 	var radlat1 = Math.PI * lat1/180;
@@ -99,8 +92,10 @@ exports.distance = function (lat1, lon1, lat2, lon2, unit) {
 	return dist;
 };
 
-exports.singleStation = function (id) {
-  return knex('stations')
+exports.singleItem = function (table, id) {
+  console.log('table: ', table);
+  console.log('id: ', id);
+  return knex(table)
   .where('id', id)
   .select();
 };

@@ -24,8 +24,10 @@
     <div class="form-inline">
       <div class="form-group">
         <label for="report_lat">Latitude:</label>
-          <input type="text" class="form-control" name="report_lat" placeholder="39.249">
+          <input type="text" class="form-control" name="report_lat" placeholder="{{ report.id }}">
       </div>
+
+
       <div class="form-group">
       <label for="report_lon">Latitude:</label>
         <input type="text" class="form-control" name="report_lon" placeholder="-106.348">
@@ -36,9 +38,10 @@
         <textarea class="report_text form-control" rows="12" name="report_text" name="report_text" placeholder="Fishing conditions, which flies worked well, etc."></textarea>
 
       <br><br>
-      <button type="submit" name="report_submit_button" class="btn btn-success report_submit_button">Add New Report</button>
-      <input type="hidden" name="id" value="{{ user.id }}">
+      <button type="submit" name="report_submit_button" class="btn btn-success report_edit_submit">Edit Report</button>
+      <input type="hidden" name="id" value="">
   </form>
+
 </div>
 
 {% block scripts %}

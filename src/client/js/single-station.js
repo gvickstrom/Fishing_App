@@ -15,7 +15,9 @@ function newMap (lat, lng, map) {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
     center: myLatLng,
-    mapTypeId: 'terrain'
+    mapTypeId: 'terrain',
+    disableDefaultUI: true,
+    zoomControl: true
   });
   return map;
 }
