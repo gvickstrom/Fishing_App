@@ -28,16 +28,24 @@ router.post('/report-new', function (req, res, next) {
 });
 
 router.get('/report-edit/:id', function (req, res, next) {
-  const id = req.params.id;
-  console.log('report-edit hit');
+  const id = parseInt(req.params.id);
   const { renderObject } = req;
   queries.singleItem('reports', id)
   .then((report) => {
-    // console.log(report);
-    renderObject.report = report;
-    console.log(renderObject.report);
+    renderObject.report = report[0];
+    res.render('report-edit', renderObject);
   })
-  res.render('report-edit', renderObject);
+});
+
+router.put('/report-edit/:id', function (req, res, next) {
+  const id = req.params.id;
+  console.log('put report-edit hit');
+  const updatedReport = req.body;
+  console.log(req.body);
+  queries.updateReport(id, updatedReport)
+  .then((result) => {
+    console.log('results from knex: ', result);
+  })
 });
 
 module.exports = router;

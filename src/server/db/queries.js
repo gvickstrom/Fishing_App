@@ -93,9 +93,23 @@ exports.distance = function (lat1, lon1, lat2, lon2, unit) {
 };
 
 exports.singleItem = function (table, id) {
-  console.log('table: ', table);
-  console.log('id: ', id);
   return knex(table)
   .where('id', id)
   .select();
 };
+
+exports.updateReport = function (id, updatedReport) {
+  console.log('updated report from queries: ', updatedReport);
+  console.log('id from queries: ', id);
+  return knex('reports')
+
+  .update({
+    start_time: updatedReport.start_time,
+    end_time: updatedReport.end_time,
+    report: updatedReport.report_text,
+    lat: updatedReport.report_lat,
+    lon: updatedReport.report_lon
+  })
+  .where('id', id)
+  .returning('*')
+}
