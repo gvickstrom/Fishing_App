@@ -19,7 +19,7 @@ router.get('/:id', function (req, res, next) {
     for (var i = 0; i < payload[0].length; i++) {
       var distance = queries.distance(payload[1][0].lat, payload[1][0].lon, payload[0][i].lat, payload[0][i].lon);
 
-      if (distance <=50) {
+      if (distance <= 50) {
         reportArr.push(payload[0][i]);
       }
     }
