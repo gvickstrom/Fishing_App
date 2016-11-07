@@ -106,9 +106,9 @@ exports.updateReport = function (id, updatedReport) {
   .update({
     start_time: updatedReport.start_time,
     end_time: updatedReport.end_time,
-    report: updatedReport.report_text,
-    lat: updatedReport.report_lat,
-    lon: updatedReport.report_lon
+    report: updatedReport.report,
+    lat: updatedReport.lat,
+    lon: updatedReport.lon
   })
   .where('id', id)
   .returning('*')

@@ -83,7 +83,6 @@ function initMap (lat, lng) {
   var lng = -105.761457
   var myLatLng = new google.maps.LatLng(lat, lng);
   var map = newMap(lat,lng);
-  // var marker = newMarker(myLatLng, map);
 
   parseStations(map, stations)
 }
@@ -92,7 +91,15 @@ function parseStations(map, stations) {
 
   stations.forEach(function(station) {
     var myLatLng = new google.maps.LatLng(station.lat, station.lon);
-    newMarker(myLatLng, map, flyRodMarker);
+    var stationData =
+    "<h4> Station Name: "  + station.site_name + "</h4>" +
+    "<ul>" +
+      "<li> Flow Rate (CFM): " + station.flow_rate + "</li>" +
+      "<li><a href=/single-station/" + station.id + ">Site Link</a></li>" +
+    "</ul>"
+
+
+    newMarker(myLatLng, map, flyRodMarker, stationData);
   })
 }
 
@@ -100,12 +107,20 @@ function parseStations(map, stations) {
 //   alert( "Latitude: "+event.latLng.lat()+" "+", longitude: "+event.latLng.lng() );
 // });
 
-function newMarker(pos, map, icon) {
+function newMarker(pos, map, icon, stationData) {
   var marker = new google.maps.Marker({
     position: pos,
     map: map,
     // title: title,
     icon: icon
+  });
+
+  var infowindow = new google.maps.InfoWindow({
+    content: stationData
+  });
+
+  marker.addListener('click', function() {
+    infowindow.open(map, marker);
   });
 
   return marker;

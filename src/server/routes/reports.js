@@ -37,8 +37,9 @@ router.put('/report-edit/:id', (req, res, next) => {
   const id = req.params.id;
   const updatedReport = req.body;
   queries.updateReport(id, updatedReport)
-  .then(result => console.log(result))
-  .catch(err => console.log(err));
+  .then((result) => {
+    res.redirect(303, '/homepage');
+  })
 });
 
 module.exports = router;
