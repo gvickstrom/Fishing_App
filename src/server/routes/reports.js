@@ -5,12 +5,11 @@ const request = require('request');
 const axios = require('axios');
 const knex = require('../db/knex.js');
 
-router.get('/report-new', function (req, res, next) {
-  const { renderObject } = req;
-  res.render('report-new', renderObject);
+router.get('/report-new', (req, res, next) => {
+  res.render('report-new');
 });
 
-router.post('/report-new', function (req, res, next) {
+router.post('/report-new', (req, res, next) => {
   knex('reports').insert({
     user_id: req.body.id,
     start_time: req.body.start_time,
@@ -19,15 +18,11 @@ router.post('/report-new', function (req, res, next) {
     lat: req.body.report_lat,
     lon: req.body.report_lon
   })
-  .then((results) => {
-    res.redirect('/homepage');
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+  .then(() => res.redirect('/homepage'))
+  .catch(err => console.log(err));
 });
 
-router.get('/report-edit/:id', function (req, res, next) {
+router.get('/report-edit/:id', (req, res, next) => {
   const id = parseInt(req.params.id);
   const { renderObject } = req;
   queries.singleItem('reports', id)
@@ -35,17 +30,15 @@ router.get('/report-edit/:id', function (req, res, next) {
     renderObject.report = report[0];
     res.render('report-edit', renderObject);
   })
+  .catch(err => console.log(err));
 });
 
-router.put('/report-edit/:id', function (req, res, next) {
+router.put('/report-edit/:id', (req, res, next) => {
   const id = req.params.id;
-  console.log('put report-edit hit');
   const updatedReport = req.body;
-  console.log(req.body);
   queries.updateReport(id, updatedReport)
   .then((result) => {
     res.redirect(303, '/homepage');
-    console.log('results from knex: ', result);
   })
 });
 
