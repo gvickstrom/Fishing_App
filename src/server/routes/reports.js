@@ -5,7 +5,6 @@ const request = require('request');
 const axios = require('axios');
 const knex = require('../db/knex.js');
 
-
 router.get('/report-new', function (req, res, next) {
   const { renderObject } = req;
   res.render('report-new', renderObject);
@@ -26,6 +25,27 @@ router.post('/report-new', function (req, res, next) {
   .catch((err) => {
     console.log(err);
   });
+});
+
+router.get('/report-edit/:id', function (req, res, next) {
+  const id = parseInt(req.params.id);
+  const { renderObject } = req;
+  queries.singleItem('reports', id)
+  .then((report) => {
+    renderObject.report = report[0];
+    res.render('report-edit', renderObject);
+  })
+});
+
+router.put('/report-edit/:id', function (req, res, next) {
+  const id = req.params.id;
+  console.log('put report-edit hit');
+  const updatedReport = req.body;
+  console.log(req.body);
+  queries.updateReport(id, updatedReport)
+  .then((result) => {
+    console.log('results from knex: ', result);
+  })
 });
 
 module.exports = router;

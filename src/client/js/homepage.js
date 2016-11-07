@@ -63,7 +63,9 @@ function newMap (lat, lng, map) {
   map = new google.maps.Map(document.getElementById('map-index'), {
     zoom: 7,
     center: myLatLng,
-    mapTypeId: 'terrain'
+    mapTypeId: 'terrain',
+    disableDefaultUI: true,
+    zoomControl: true
   });
   return map;
 }
