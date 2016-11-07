@@ -15,7 +15,7 @@ $(document).on('click', '.report_edit_submit', function(e) {
     lon: $report_lon,
     id: $report_id
   };
-  
+
   $.ajax({
     type: 'PUT',
     url: `/reports/report-edit/${$report_id}`,
@@ -24,6 +24,7 @@ $(document).on('click', '.report_edit_submit', function(e) {
   .done((data) => {
     console.log('new report submitted');
     console.log(data);
+    window.location="/homepage";
   })
   .fail((err) => {
     console.log(err);

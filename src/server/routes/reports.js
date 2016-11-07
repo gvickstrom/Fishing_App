@@ -44,6 +44,7 @@ router.put('/report-edit/:id', function (req, res, next) {
   console.log(req.body);
   queries.updateReport(id, updatedReport)
   .then((result) => {
+    res.redirect(303, '/homepage');
     console.log('results from knex: ', result);
   })
 });
