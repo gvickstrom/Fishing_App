@@ -111,8 +111,8 @@
             {{ report.report }}
           </p>
           {% if report.user_id === user.id %}
-          <a href="/report-edit/:id" class="btn btn-sm btn-info">Edit</a>
-          <a href="#" class="btn btn-sm btn-danger">Delete</a>
+          <a href="/reports/report-edit/{{report.id}}" class="btn btn-sm btn-info">Edit</a>
+          <a href="/delete-report/{{report.id}}" class="btn btn-sm btn-danger">Delete</a>
           {% endif %}
           <hr>
         </div>

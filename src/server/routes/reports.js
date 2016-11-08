@@ -39,7 +39,7 @@ router.put('/report-edit/:id', (req, res, next) => {
   queries.updateReport(id, updatedReport)
   .then((result) => {
     res.redirect(303, '/homepage');
-  })
+  });
 });
 
 module.exports = router;

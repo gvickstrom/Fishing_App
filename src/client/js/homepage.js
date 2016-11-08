@@ -51,7 +51,7 @@ $(document).ready(function() {
 });
 
 function addGoogleMapsScript () {
-  'addGoogleMapsScript hit'
+  'addGoogleMapsScript hit';
   var s = document.createElement('script');
   s.type = 'text/javascript';
   s.src  = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDzaOBIjmRJeiSfhiXhPC4Wo4syHsQG_hc&callback=initMap&libraries=geometry';
@@ -59,13 +59,14 @@ function addGoogleMapsScript () {
 }
 
 function newMap (lat, lng, map) {
-  myLatLng = new google.maps.LatLng(lat, lng);
+  var myLatLng = new google.maps.LatLng(lat, lng);
   map = new google.maps.Map(document.getElementById('map-index'), {
     zoom: 7,
     center: myLatLng,
     mapTypeId: 'terrain',
     disableDefaultUI: true,
-    zoomControl: true
+    zoomControl: true,
+    scrollwheel: false
   });
   return map;
 }
@@ -79,12 +80,12 @@ var greenMarker = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
 var flyRodMarker = '../media/fishing_icon.png';
 
 function initMap (lat, lng) {
-  var lat = 39.138440
-  var lng = -105.761457
+  lat = 39.138440;
+  lng = -105.761457;
   var myLatLng = new google.maps.LatLng(lat, lng);
   var map = newMap(lat,lng);
 
-  parseStations(map, stations)
+  parseStations(map, stations);
 }
 
 function parseStations(map, stations) {
@@ -96,11 +97,11 @@ function parseStations(map, stations) {
     "<ul>" +
       "<li> Flow Rate (CFM): " + station.flow_rate + "</li>" +
       "<li><a href=/single-station/" + station.id + ">Site Link</a></li>" +
-    "</ul>"
+    "</ul>";
 
 
     newMarker(myLatLng, map, flyRodMarker, stationData);
-  })
+  });
 }
 
 // google.maps.event.addListener(map, 'click', function( event ){
