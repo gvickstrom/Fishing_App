@@ -11,7 +11,7 @@ router.get('/report-new', (req, res, next) => {
 
 router.post('/report-new', (req, res, next) => {
   knex('reports').insert({
-    user_id: req.body.id,
+    user_id: req.session.user.id,
     start_time: req.body.start_time,
     end_time: req.body.end_time,
     report: req.body.report_text,
