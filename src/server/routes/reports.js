@@ -5,28 +5,40 @@ const request = require('request');
 const axios = require('axios');
 const knex = require('../db/knex.js');
 
-
-router.get('/report-new', function (req, res, next) {
-  const { renderObject } = req;
-  res.render('report-new', renderObject);
+router.get('/report-new', (req, res, next) => {
+  res.render('report-new');
 });
 
-router.post('/report-new', function (req, res, next) {
-  console.log('server side hit');
+router.post('/report-new', (req, res, next) => {
   knex('reports').insert({
-    user_id: 1,
+    user_id: req.body.id,
     start_time: req.body.start_time,
     end_time: req.body.end_time,
     report: req.body.report_text,
     lat: req.body.report_lat,
     lon: req.body.report_lon
   })
-  .then((results) => {
-    console.log('results ', results);
-    res.redirect('/homepage');
+  .then(() => res.redirect('/homepage'))
+  .catch(err => console.log(err));
+});
+
+router.get('/report-edit/:id', (req, res, next) => {
+  const id = parseInt(req.params.id);
+  const { renderObject } = req;
+  queries.singleItem('reports', id)
+  .then((report) => {
+    renderObject.report = report[0];
+    res.render('report-edit', renderObject);
   })
-  .catch((err) => {
-    console.log(err);
+  .catch(err => console.log(err));
+});
+
+router.put('/report-edit/:id', (req, res, next) => {
+  const id = req.params.id;
+  const updatedReport = req.body;
+  queries.updateReport(id, updatedReport)
+  .then((result) => {
+    res.redirect(303, '/homepage');
   });
 });
 

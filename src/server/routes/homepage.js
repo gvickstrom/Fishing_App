@@ -6,13 +6,13 @@ const bcrypt = require('bcrypt');
 const salt = bcrypt.genSaltSync(10);
 
 router.get('/', function (req, res, next) {
-  queries.getRivers(function(err, results) {
+  queries.getDataFromTwoTables('rivers', 'stations', function (err, result) {
     const { renderObject } = req;
     if (err) {
-      renderObject.message = err.message || 'Something terrible happened.';
-      res.render('error', renderObject);
+      console.log(err);
     } else {
-      renderObject.rivers = results;
+      renderObject.rivers = result.first;
+      renderObject.stationsExport = JSON.stringify(result.second);
       res.render('index', renderObject);
     }
   });
@@ -33,9 +33,7 @@ router.post('/', (req, res, next) => {
       res.redirect('error');
     }
   })
-  .catch((err) => {
-    return next(err);
-  });
+  .catch(err => next(err));
 });
 
 module.exports = router;

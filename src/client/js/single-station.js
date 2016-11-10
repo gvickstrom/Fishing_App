@@ -10,34 +10,33 @@ function addGoogleMapsScript () {
 }
 
 function newMap (lat, lng, map) {
-  console.log('newMap hit', 'lat: ', lat, 'lng: ', lng);
-  myLatLng = new google.maps.LatLng(lat, lng);
+
+  var myLatLng = new google.maps.LatLng(lat, lng);
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
     center: myLatLng,
-    mapTypeId: 'terrain'
+    mapTypeId: 'terrain',
+    disableDefaultUI: true,
+    zoomControl: true,
+    scrollwheel: false
   });
   return map;
 }
 
-
-var reports = (JSON.parse($(".data-lat-lng").attr("data-lat-lng")));
-console.log(reports);
+var stations = (JSON.parse($(".data-lat-lng").attr("data-lat-lng")));
 
 var greenMarker = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
 
 var flyRodMarker = '../media/fishing_icon.png';
 
 function initMap (lat, lng) {
-  console.log('initMap hit');
-  var lat = $(".geo").attr("data-lat")
-  var lng = $(".geo").attr("data-lon")
-  console.log('initMap lat: ', lat);
+  lat = $(".geo").attr("data-lat");
+  lng = $(".geo").attr("data-lon");
   var myLatLng = new google.maps.LatLng(lat, lng);
   var map = newMap(lat,lng);
   var marker = newMarker(myLatLng, map,'Station');
 
-  parseStations(map, reports)
+  parseStations(map, stations);
 }
 
 function parseStations(map, reports) {
@@ -45,7 +44,7 @@ function parseStations(map, reports) {
   reports.forEach(function(report) {
     var myLatLng = new google.maps.LatLng(report.lat, report.lon);
     newMarker(myLatLng, map, 'Report', flyRodMarker);
-  })
+  });
 }
 
 // google.maps.event.addListener(map, 'click', function( event ){
@@ -53,7 +52,6 @@ function parseStations(map, reports) {
 // });
 
 function newMarker(pos, map, title, icon) {
-  console.log('newMarker');
   var marker = new google.maps.Marker({
     position: pos,
     map: map,
