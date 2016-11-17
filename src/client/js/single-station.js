@@ -11,13 +11,14 @@ function addGoogleMapsScript () {
 
 function newMap (lat, lng, map) {
 
-  myLatLng = new google.maps.LatLng(lat, lng);
+  var myLatLng = new google.maps.LatLng(lat, lng);
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
     center: myLatLng,
     mapTypeId: 'terrain',
     disableDefaultUI: true,
-    zoomControl: true
+    zoomControl: true,
+    scrollwheel: false
   });
   return map;
 }
@@ -29,13 +30,13 @@ var greenMarker = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
 var flyRodMarker = '../media/fishing_icon.png';
 
 function initMap (lat, lng) {
-  var lat = $(".geo").attr("data-lat")
-  var lng = $(".geo").attr("data-lon")
+  lat = $(".geo").attr("data-lat");
+  lng = $(".geo").attr("data-lon");
   var myLatLng = new google.maps.LatLng(lat, lng);
   var map = newMap(lat,lng);
   var marker = newMarker(myLatLng, map,'Station');
 
-  parseStations(map, stations)
+  parseStations(map, stations);
 }
 
 function parseStations(map, reports) {
@@ -43,7 +44,7 @@ function parseStations(map, reports) {
   reports.forEach(function(report) {
     var myLatLng = new google.maps.LatLng(report.lat, report.lon);
     newMarker(myLatLng, map, 'Report', flyRodMarker);
-  })
+  });
 }
 
 // google.maps.event.addListener(map, 'click', function( event ){

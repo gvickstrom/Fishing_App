@@ -1,4 +1,4 @@
-$(document).on('click', '.report_edit_submit', function(e) {
+$('.report_edit_submit').on('click', function(e) {
   e.preventDefault();
   console.log('edit button clicked');
   const $start_time = $('.start_time').val();

@@ -15,25 +15,7 @@ router.get('/', function (req, res, next) {
       renderObject.stationsExport = JSON.stringify(result.second);
       res.render('index', renderObject);
     }
-  })
-  // console.log('get homepage');
-  // Promise.all([
-  //   queries.getRivers(function(err, results) {
-  //     const { renderObject } = req;
-  //     if (err) {
-  //       renderObject.message = err.message || 'Something terrible happened.';
-  //       res.render('error', renderObject);
-  //     } else {
-  //       renderObject.rivers = results;
-  //       console.log('results: ', results);
-  //       res.render('index', renderObject);
-  //     }
-  //   }),
-  //   queries.getStations()
-  // ])
-  // .then(payload => {
-  //   console.log('payload: ', payload);
-  // })
+  });
 });
 
 router.post('/', (req, res, next) => {
@@ -53,9 +35,7 @@ router.post('/', (req, res, next) => {
       res.redirect('error');
     }
   })
-  .catch((err) => {
-    return next(err);
-  });
+  .catch(err => next(err));
 });
 
 module.exports = router;

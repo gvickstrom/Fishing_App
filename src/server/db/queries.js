@@ -35,6 +35,17 @@ exports.getRiverSites = function(riverName, callback) {
   });
 };
 
+exports.grabCoordinates = function(callback) {
+  knex('stations')
+  .select('lat', 'lon')
+  .then(coordinates => {
+    callback(null, coordinates)
+  })
+  .catch(err => {
+    callback(err);
+  });
+};
+
 exports.updateRiverData = function(object, callback) {
   knex('stations')
   .insert(object)
