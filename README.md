@@ -1,11 +1,19 @@
-# Anglers
+# 🐟 Welcome to the *Anglers* Github Repository! 🐟
 
-### Contributors
-- Adam Franzen
-- George Vickstrom
-- Brandon Blair
 
-### Description
+[Visit the Deployed Website](https://ancient-basin-31517.herokuapp.com/landing)
+
+## What is *Anglers*?
+*Anglers* across Colorado now have the ability to view current fishing conditions including weather and river flow as well as leave tips for fellow anglers.
+
+### How does it work?
+*Anglers* aggregates river conditions by accessing current USGS (United States Geological Survey) river station data. Combined with fishing reports with local insight from the finishing community, *Anglers* is a valuable resource for your next day on the water.
+
+>### Rivers Aggregated:
+- Arkansas
+- Upper South Platte
+- Blue
+- Roaring Fork
 
 ### Languages and Frameworks Used
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
@@ -18,5 +26,10 @@
 - [Knex.js](http://knexjs.org/)
 - [Axios](https://github.com/mzabriskie/axios)
 
-### Link to live app
-> [Link To Heroku App](https://ancient-basin-31517.herokuapp.com/landing)
+_________
+#### To start the server locally
+
+1. git clone or fork this repo
+1. run `npm install` in the terminal.
+1. run gulp in the Terminal/Command Line
+1. copy and paste `http://localhost:3000` to your browser

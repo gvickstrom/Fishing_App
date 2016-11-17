@@ -45,6 +45,8 @@ router.post('/', (req, res, next) => {
     const passCompare = bcrypt.compareSync(loginPassword, data[0].password);
     if (data[0].username === loginName && passCompare === true) {
       req.session.user = data[0];
+      
+      // req.session.user_id = data[0].id;
       res.redirect('/homepage');
     }
     else {

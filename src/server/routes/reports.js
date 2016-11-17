@@ -7,11 +7,13 @@ const knex = require('../db/knex.js');
 
 router.get('/report-new', (req, res, next) => {
   res.render('report-new');
+  console.log(req.session);
 });
 
 router.post('/report-new', (req, res, next) => {
+  var user_id = req.session.id;
   knex('reports').insert({
-    user_id: req.body.id,
+    user_id: req.session.user.id,
     start_time: req.body.start_time,
     end_time: req.body.end_time,
     report: req.body.report_text,
