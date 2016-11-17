@@ -1,7 +1,5 @@
 # 🐟 Welcome to the *Anglers* Github Repository! 🐟
 
-
-<<<<<<< HEAD
 [Visit the Deployed Website](https://ancient-basin-31517.herokuapp.com/landing)
 
 ## What is *Anglers*?
@@ -15,10 +13,11 @@
 - Upper South Platte
 - Blue
 - Roaring Fork
-=======
-### Description
-Anglers across Colorado now have the ability to view current fishing conditions including weather and river flow as well as leave tips for fellow anglers.
->>>>>>> a9602b3107bad6c496c02aa0b1d0b3883d054444
+
+### Contributors
+- Adam Franzen
+- George Vickstrom
+- Brandon Blair
 
 ### Languages and Frameworks Used
 - [HTML5](https://developer.mozilla.org/en-US/docs/Web/HTML)
